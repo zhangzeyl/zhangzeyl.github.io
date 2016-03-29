@@ -40,14 +40,14 @@
 <div>
 		
 			<div id="imglogo">
-				<a href="/"><img src="/img/logo.gif" alt="Hexo" title="Hexo"/></a>
+				<a href="/"><img src="/img/logo.png" alt="Hexo" title="Hexo"/></a>
 			</div>
 			
 			<div id="textlogo">
 				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -63,7 +63,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
 						<input type="hidden" name="q" value="site:yoursite.com">
 					</form>
 					
@@ -88,7 +88,7 @@
 		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-25T13:43:46.000Z" itemprop="datePublished"> 发表于 2016-03-25</time>
+    <time datetime="2016-03-25T13:43:46.000Z" itemprop="datePublished"> Published 2016-03-25</time>
     
   </p>
 </header>
@@ -176,7 +176,7 @@
 		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-25T12:43:46.000Z" itemprop="datePublished"> 发表于 2016-03-25</time>
+    <time datetime="2016-03-25T12:43:46.000Z" itemprop="datePublished"> Published 2016-03-25</time>
     
   </p>
 </header>
@@ -269,7 +269,7 @@
 		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-25T08:18:30.000Z" itemprop="datePublished"> 发表于 2016-03-25</time>
+    <time datetime="2016-03-25T08:18:30.000Z" itemprop="datePublished"> Published 2016-03-25</time>
     
   </p>
 </header>
@@ -637,7 +637,7 @@ public  static void radixSort(int[] array,int d)
 		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-20T13:20:01.000Z" itemprop="datePublished"> 发表于 2016-03-20</time>
+    <time datetime="2016-03-20T13:20:01.000Z" itemprop="datePublished"> Published 2016-03-20</time>
     
   </p>
 </header>
@@ -950,6 +950,85 @@ private static void verify() throws Exception {
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2016/03/18/Hashtable与ConcurrentHashMap区别/" title="Hashtable与ConcurrentHashMap区别" itemprop="url">Hashtable与ConcurrentHashMap区别</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-18T12:43:46.000Z" itemprop="datePublished"> Published 2016-03-18</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="ConcurrentHashMap的特点"><a href="#ConcurrentHashMap的特点" class="headerlink" title="ConcurrentHashMap的特点"></a>ConcurrentHashMap的特点</h2><ul>
+<li><p>融合了Hashtable和HashMap二者的优势。</p>
+<ul>
+<li>Hashtable是做了同步的</li>
+<li>HashMap未考虑同步。</li>
+<li>HashMap在单线程情况下效率较高</li>
+<li>Hashtable在的多线程情况下，同步操作能保证程序执行的正确性</li>
+</ul>
+</li>
+<li><p>Hashtable每次同步执行的时候都要锁住整个结构</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><center><img src="http://i.imgur.com/AAFLQpc.jpg" alt="Hashtable与ConcurrentHashMap的锁结构"></center></h2></li>
+<li>ConcurrentHashMap正是为了解决这个问题而诞生的</li>
+<li>ConcurrentHashMap锁的方式是稍微细粒度的。 ConcurrentHashMap将hash表分为16个桶（默认值），诸如get,put,remove等常用操作只锁当前需要用到的桶。</li>
+<li>试想，原来只能一个线程进入，现在却能同时16个写线程进入（写线程才需要锁定，而读线程几乎不受限制，之后会提到），并发性的提升是显而易见的。</li>
+</ul>
+<h2 id="ConcurrentHashMap的迭代方式"><a href="#ConcurrentHashMap的迭代方式" class="headerlink" title="ConcurrentHashMap的迭代方式"></a>ConcurrentHashMap的迭代方式</h2><ul>
+<li>使用了不同于传统集合的快速失败迭代器的另一种迭代方式，我们称为弱一致迭代器。</li>
+<li>在这种迭代方式中，当iterator被创建后集合再发生改变就不再是抛出 ConcurrentModificationException，取而代之的是在改变时new新的数据从而不影响原有的数据，iterator完成后再将头指针替换为新的数据</li>
+<li>这样iterator线程可以使用原来老的数据，而写线程也可以并发的完成改变，更重要的，这保证了多个线程并发执行的连续性和扩展性，是性能提升的关键。</li>
+</ul>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Java/">Java</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Java/">Java</a><a href="/tags/Hashtable/">Hashtable</a><a href="/tags/ConcurrentHashMap/">ConcurrentHashMap</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2016/03/18/JVM的内存区域划分/" title="JVM的内存区域划分" itemprop="url">JVM的内存区域划分</a>
   </h1>
   <p class="article-author">By
@@ -957,7 +1036,7 @@ private static void verify() throws Exception {
 		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-18T12:43:46.000Z" itemprop="datePublished"> 发表于 2016-03-18</time>
+    <time datetime="2016-03-18T12:43:46.000Z" itemprop="datePublished"> Published 2016-03-18</time>
     
   </p>
 </header>
@@ -1094,7 +1173,7 @@ private static void verify() throws Exception {
 		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-18T12:43:46.000Z" itemprop="datePublished"> 发表于 2016-03-18</time>
+    <time datetime="2016-03-18T12:43:46.000Z" itemprop="datePublished"> Published 2016-03-18</time>
     
   </p>
 </header>
@@ -1203,70 +1282,101 @@ private static void verify() throws Exception {
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/03/18/TCP中三次握手与四次挥手/" title="TCP中三次握手与四次挥手" itemprop="url">TCP中三次握手与四次挥手</a>
+      <a href="/2016/03/18/MySQL数据库三种常用存储引擎特性对比/" title="MySQL数据库三种常用存储引擎特性对比" itemprop="url">MySQL数据库三种常用存储引擎特性对比</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-18T12:43:46.000Z" itemprop="datePublished"> 发表于 2016-03-18</time>
+    <time datetime="2016-03-18T12:43:46.000Z" itemprop="datePublished"> Published 2016-03-18</time>
     
   </p>
 </header>
     <div class="article-content">
         
-        <p>TCP(Transmission Control Protocol)　传输控制协议</p>
-<h2 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h2><ul>
-<li>TCP是主机对主机层的传输控制协议，提供可靠的连接服务，采用三次握手确认建立一个连接:<ul>
-<li>位码即tcp标志位,有6种标示:<ul>
-<li>SYN(synchronous建立联机)</li>
-<li>ACK(acknowledgement 确认)</li>
-<li>PSH(push传送)</li>
-<li>FIN(finish结束)</li>
-<li>RST(reset重置)</li>
-<li>URG(urgent紧急)</li>
-<li>Sequence number(顺序号码)</li>
-<li>Acknowledge number(确认号码)</li>
+        <h2 id="什么叫存储引擎？"><a href="#什么叫存储引擎？" class="headerlink" title="什么叫存储引擎？"></a>什么叫存储引擎？</h2><ul>
+<li>MySQL中的数据用各种不同的技术存储在文件（或内存）中，这些技术中的每一种技术都使用不同的存储机制，索引技巧，锁定水平并且最终提供广泛的不同功能和能力。</li>
+<li>在MySQL中将这些不同的技术及配套的相关功能称为存储引擎。</li>
+</ul>
+<h2 id="MySQL存储引擎特点"><a href="#MySQL存储引擎特点" class="headerlink" title="MySQL存储引擎特点"></a>MySQL存储引擎特点</h2><ul>
+<li>不仅可以同时使用多种存储引擎，</li>
+<li>而且每种存储引擎和MySQL之间使用插件方式这种非常松的耦合关系。</li>
+</ul>
+<h2 id="MyISAM"><a href="#MyISAM" class="headerlink" title="MyISAM"></a>MyISAM</h2><ul>
+<li>特性：<ul>
+<li>不支持事务：MyISAM存储引擎不支持事务，所以对事务有要求的业务场景不能使用</li>
+<li>表级锁定：其锁定机制是表级索引，这虽然可以让锁定的实现成本很小但是也同时大大降低了其并发性能</li>
+<li>读写互相阻塞：不仅会在写入的时候阻塞读取，MyISAM还会在读取的时候阻塞写入，但读本身并不会阻塞另外的读</li>
+<li>只会缓存索引：MyISAM可以通过key_buffer缓存以大大提高访问性能减少磁盘IO，但是这个缓存区只会缓存索引，而不会缓存数据</li>
 </ul>
 </li>
-<li>各个状态的意义如下： <ul>
-<li>LISTEN - 侦听来自远方TCP端口的连接请求； </li>
-<li>SYN-SENT -在发送连接请求后等待匹配的连接请求； </li>
-<li>SYN-RECEIVED - 在收到和发送一个连接请求后等待对连接请求的确认； </li>
-<li>ESTABLISHED- 代表一个打开的连接，数据可以传送给用户； </li>
-<li>FIN-WAIT-1 - 等待远程TCP的连接中断请求，或先前的连接中断请求的确认；</li>
-<li>FIN-WAIT-2 - 从远程TCP等待连接中断请求； </li>
-<li>CLOSE-WAIT - 等待从本地用户发来的连接中断请求； </li>
-<li>CLOSING -等待远程TCP对连接中断的确认； </li>
-<li>LAST-ACK - 等待原来发向远程TCP的连接中断请求的确认； </li>
-<li>TIME-WAIT -等待足够的时间以确保远程TCP接收到连接中断请求的确认； </li>
-<li>CLOSED - 没有任何连接状态；</li>
+<li>适用场景<ul>
+<li>不需要事务支持（不支持）</li>
+<li>并发相对较低（锁定机制问题）</li>
+<li>数据修改相对较少（阻塞问题）</li>
+<li>以读为主</li>
+<li>数据一致性要求不是非常高</li>
 </ul>
 </li>
-<li>过程<ul>
-<li>第一次握手：建立连接时，客户端A发送SYN包（SYN=j）到服务器B，并进入SYN_SEND状态，等待服务器B确认。</li>
-<li>第二次握手：服务器B收到SYN包，必须确认客户A的SYN（ACK=j+1），同时自己也发送一个SYN包（SYN=k），即SYN+ACK包，此时服务器B进入SYN_RECV状态。</li>
-<li>第三次握手：客户端A收到服务器B的SYN＋ACK包，向服务器B发送确认包ACK（ACK=k+1）。此包发送完毕，客户端A和服务器B进入ESTABLISHED状态，完成三次握手。</li>
-</ul>
-</li>
-<li>完成三次握手，客户端与服务器开始传送数据。</li>
+<li>最佳实践<ul>
+<li>尽量索引（缓存机制）</li>
+<li>调整读写优先级，根据实际需求确保重要操作更优先</li>
+<li>启用延迟插入改善大批量写入性能</li>
+<li>尽量顺序操作让insert数据都写入到尾部，减少阻塞</li>
+<li>分解大的操作，降低单个操作的阻塞时间</li>
+<li>降低并发数，某些高并发场景通过应用来进行排队机制</li>
+<li>对于相对静态的数据，充分利用Query Cache可以极大的提高访问效率</li>
+<li>MyISAM的Count只有在全表扫描的时候特别高效，带有其他条件的count都需要进行实际的数据访问</li>
 </ul>
 </li>
 </ul>
-<h2 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h2><ul>
-<li>TCP连接是全双工的，因此每个方向都必须单独进行关闭。</li>
-<li>这个原则是当一方完成它的数据发送任务后就能发送一个FIN来终止这个方向的连接。</li>
-<li>收到一个 FIN只意味着这一方向上没有数据流动，一个TCP连接在收到一个FIN后仍能发送数据。</li>
-<li>首先进行关闭的一方将执行主动关闭，而另一方执行被动关闭。</li>
-<li>TCP的连接的拆除需要发送四个包，因此称为四次挥手(four-way handshake)。客户端或服务器均可主动发起挥手动作，在socket编程中，任何一方执行close()操作即可产生挥手操作。<ul>
-<li>过程<ul>
-<li>客户端A发送一个FIN，用来关闭客户A到服务器B的数据传送。 </li>
-<li>服务器B收到这个FIN，它发回一个ACK，确认序号为收到的序号加1。和SYN一样，一个FIN将占用一个序号。 </li>
-<li>服务器B关闭与客户端A的连接，发送一个FIN给客户端A。 </li>
-<li>客户端A发回ACK报文确认，并将确认序号设置为收到序号加1。 </li>
+<h2 id="InnoDB"><a href="#InnoDB" class="headerlink" title="InnoDB"></a>InnoDB</h2><ul>
+<li>特性<ul>
+<li>具有较好的事务支持：支持4个事务隔离级别，支持多版本读</li>
+<li>行级锁定：通过索引实现，全表扫描仍然会是表锁，注意间隙锁的影响</li>
+<li>读写阻塞与事务隔离级别相关</li>
+<li>具有非常高效的缓存特性：能缓存索引，也能缓存数据</li>
+<li>整个表和主键以Cluster方式存储，组成一颗平衡树</li>
+<li>所有Secondary Index都会保存主键信息</li>
 </ul>
 </li>
+<li>适用场景<ul>
+<li>需要事务支持（具有较好的事务特性）</li>
+<li>行级锁定对高并发有很好的适应能力，但需要确保查询是通过索引完成</li>
+<li>数据更新较为频繁的场景</li>
+<li>数据一致性要求较高</li>
+<li>硬件设备内存较大，可以利用InnoDB较好的缓存能力来提高内存利用率，尽可能减少磁盘 IO</li>
+</ul>
+</li>
+<li>最佳实践<ul>
+<li>主键尽可能小，避免给Secondary index带来过大的空间负担</li>
+<li>避免全表扫描，因为会使用表锁</li>
+<li>尽可能缓存所有的索引和数据，提高响应速度</li>
+<li>在大批量小插入的时候，尽量自己控制事务而不要使用autocommit自动提交</li>
+<li>合理设置innodb_flush_log_at_trx_commit参数值，不要过度追求安全性</li>
+<li>避免主键更新，因为这会带来大量的数据移动</li>
+</ul>
+</li>
+</ul>
+<h2 id="NDBCluster"><a href="#NDBCluster" class="headerlink" title="NDBCluster"></a>NDBCluster</h2><ul>
+<li>特性<ul>
+<li>分布式：分布式存储引擎，可以由多个NDBCluster存储引擎组成集群分别存放整体数据的一部分</li>
+<li>支持事务：和Innodb一样，支持事务</li>
+<li>可与mysqld不在一台主机：可以和mysqld分开存在于独立的主机上，然后通过网络和mysqld通信交互</li>
+<li>内存需求量巨大：新版本索引以及被索引的数据必须存放在内存中，老版本所有数据和索引必须存在与内存中</li>
+</ul>
+</li>
+<li>适用场景<ul>
+<li>具有非常高的并发需求</li>
+<li>对单个请求的响应并不是非常的critical</li>
+<li>查询简单，过滤条件较为固定，每次请求数据量较少，又不希望自己进行水平Sharding</li>
+</ul>
+</li>
+<li>最佳实践<ul>
+<li>尽可能让查询简单，避免数据的跨节点传输</li>
+<li>尽可能满足SQL节点的计算性能，大一点的集群SQL节点会明显多余Data节点</li>
+<li>在各节点之间尽可能使用万兆网络环境互联，以减少数据在网络层传输过程中的延时<br>注：以上三个存储引擎是目前相对主流的存储引擎，还有其他类似如：Memory，Merge，CSV，Archive等存储引擎的使用场景都相对较少。</li>
 </ul>
 </li>
 </ul>
@@ -1282,13 +1392,13 @@ private static void verify() throws Exception {
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/网络/">网络</a>
+  <a class="article-category-link" href="/categories/数据库/">数据库</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/网络/">网络</a><a href="/tags/TCP/">TCP</a>
+  <span></span> <a href="/tags/数据库/">数据库</a><a href="/tags/MySQL/">MySQL</a><a href="/tags/存储引擎/">存储引擎</a>
   </div>
 
 </div>
@@ -1323,7 +1433,7 @@ private static void verify() throws Exception {
 		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-18T12:43:46.000Z" itemprop="datePublished"> 发表于 2016-03-18</time>
+    <time datetime="2016-03-18T12:43:46.000Z" itemprop="datePublished"> Published 2016-03-18</time>
     
   </p>
 </header>
@@ -1425,7 +1535,7 @@ return Entry[index];
 		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-18T12:43:46.000Z" itemprop="datePublished"> 发表于 2016-03-18</time>
+    <time datetime="2016-03-18T12:43:46.000Z" itemprop="datePublished"> Published 2016-03-18</time>
     
   </p>
 </header>
@@ -1506,95 +1616,16 @@ return Entry[index];
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/03/18/Hashtable与ConcurrentHashMap区别/" title="Hashtable与ConcurrentHashMap区别" itemprop="url">Hashtable与ConcurrentHashMap区别</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
-		
-  <p class="article-time">
-    <time datetime="2016-03-18T12:43:46.000Z" itemprop="datePublished"> 发表于 2016-03-18</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="ConcurrentHashMap的特点"><a href="#ConcurrentHashMap的特点" class="headerlink" title="ConcurrentHashMap的特点"></a>ConcurrentHashMap的特点</h2><ul>
-<li><p>融合了Hashtable和HashMap二者的优势。</p>
-<ul>
-<li>Hashtable是做了同步的</li>
-<li>HashMap未考虑同步。</li>
-<li>HashMap在单线程情况下效率较高</li>
-<li>Hashtable在的多线程情况下，同步操作能保证程序执行的正确性</li>
-</ul>
-</li>
-<li><p>Hashtable每次同步执行的时候都要锁住整个结构</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><center><img src="http://i.imgur.com/AAFLQpc.jpg" alt="Hashtable与ConcurrentHashMap的锁结构"></center></h2></li>
-<li>ConcurrentHashMap正是为了解决这个问题而诞生的</li>
-<li>ConcurrentHashMap锁的方式是稍微细粒度的。 ConcurrentHashMap将hash表分为16个桶（默认值），诸如get,put,remove等常用操作只锁当前需要用到的桶。</li>
-<li>试想，原来只能一个线程进入，现在却能同时16个写线程进入（写线程才需要锁定，而读线程几乎不受限制，之后会提到），并发性的提升是显而易见的。</li>
-</ul>
-<h2 id="ConcurrentHashMap的迭代方式"><a href="#ConcurrentHashMap的迭代方式" class="headerlink" title="ConcurrentHashMap的迭代方式"></a>ConcurrentHashMap的迭代方式</h2><ul>
-<li>使用了不同于传统集合的快速失败迭代器的另一种迭代方式，我们称为弱一致迭代器。</li>
-<li>在这种迭代方式中，当iterator被创建后集合再发生改变就不再是抛出 ConcurrentModificationException，取而代之的是在改变时new新的数据从而不影响原有的数据，iterator完成后再将头指针替换为新的数据</li>
-<li>这样iterator线程可以使用原来老的数据，而写线程也可以并发的完成改变，更重要的，这保证了多个线程并发执行的连续性和扩展性，是性能提升的关键。</li>
-</ul>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/Java/">Java</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Java/">Java</a><a href="/tags/Hashtable/">Hashtable</a><a href="/tags/ConcurrentHashMap/">ConcurrentHashMap</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next<span></span></a>
   </nav>
 
 </div>
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
@@ -1602,7 +1633,7 @@ return Entry[index];
 
   
 <div class="categorieslist">
-	<p class="asidetitle">分类</p>
+	<p class="asidetitle">Categories</p>
 		<ul>
 		
 		  
@@ -1631,7 +1662,7 @@ return Entry[index];
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -1667,6 +1698,14 @@ return Entry[index];
 			
 		
 			
+				<li><a href="/tags/网络/" title="网络">网络<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/TCP/" title="TCP">TCP<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/安全/" title="安全">安全<sup>1</sup></a></li>
 			
 		
@@ -1683,6 +1722,10 @@ return Entry[index];
 			
 		
 			
+				<li><a href="/tags/内存区域/" title="内存区域">内存区域<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/线程/" title="线程">线程<sup>1</sup></a></li>
 			
 		
@@ -1695,23 +1738,11 @@ return Entry[index];
 			
 		
 			
-				<li><a href="/tags/网络/" title="网络">网络<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/TCP/" title="TCP">TCP<sup>1</sup></a></li>
+				<li><a href="/tags/引用/" title="引用">引用<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/HashMap/" title="HashMap">HashMap<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/wait/" title="wait">wait<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/notify/" title="notify">notify<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -1719,7 +1750,7 @@ return Entry[index];
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -1741,11 +1772,11 @@ return Entry[index];
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -1763,7 +1794,7 @@ return Entry[index];
 	
 	<section class="info">
 		<p> Hello ,I&#39;m zhangze. <br/>
-			This is my blog,shall you travel with me?</p>
+			This is my blog.Let&#39;s have a nice little stroll. ^_^</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">
@@ -1895,7 +1926,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
