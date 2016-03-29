@@ -47,7 +47,7 @@
 				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -63,7 +63,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
 						<input type="hidden" name="q" value="site:yoursite.com">
 					</form>
 					
@@ -81,6 +81,76 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2016/03/29/Java中四种引用类型（强、软、弱、虚）/" title="Java中的四种引用类型（强、软、弱、虚）" itemprop="url">Java中的四种引用类型（强、软、弱、虚）</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-29T04:01:33.000Z" itemprop="datePublished"> Published 2016-03-29</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h4 id="在JDK-1-2以前的版本中，若一个对象不被任何变量引用，那么程序就无法再使用这个对象。也就是说，只有对象处于可触及（reachable）状态，程序才能使用它。从JDK-1-2版本开始，把对象的引用分为4种级别，从而使程序能更加灵活地控制对象的生命周期。这4种级别由高到低依次为：强引用、软引用、弱引用和虚引用。"><a href="#在JDK-1-2以前的版本中，若一个对象不被任何变量引用，那么程序就无法再使用这个对象。也就是说，只有对象处于可触及（reachable）状态，程序才能使用它。从JDK-1-2版本开始，把对象的引用分为4种级别，从而使程序能更加灵活地控制对象的生命周期。这4种级别由高到低依次为：强引用、软引用、弱引用和虚引用。" class="headerlink" title="在JDK 1.2以前的版本中，若一个对象不被任何变量引用，那么程序就无法再使用这个对象。也就是说，只有对象处于可触及（reachable）状态，程序才能使用它。从JDK 1.2版本开始，把对象的引用分为4种级别，从而使程序能更加灵活地控制对象的生命周期。这4种级别由高到低依次为：强引用、软引用、弱引用和虚引用。"></a>在JDK 1.2以前的版本中，若一个对象不被任何变量引用，那么程序就无法再使用这个对象。也就是说，只有对象处于可触及（reachable）状态，程序才能使用它。从JDK 1.2版本开始，把对象的引用分为4种级别，从而使程序能更加灵活地控制对象的生命周期。这4种级别由高到低依次为：强引用、软引用、弱引用和虚引用。</h4><h3 id="强引用（StrongReference）"><a href="#强引用（StrongReference）" class="headerlink" title="强引用（StrongReference）"></a>强引用（StrongReference）</h3><ul>
+<li>强引用是使用最普遍的引用。如果一个对象具有强引用，那垃圾回收器绝不会回收它。当内存空间不足，Java虚拟机宁愿抛出OutOfMemoryError错误，使程序异常终止，也不会靠随意回收具有强引用的对象来解决内存不足的问题。  ps：强引用其实也就是我们平时A a = new A()这个意思。<h3 id="软引用（SoftReference）"><a href="#软引用（SoftReference）" class="headerlink" title="软引用（SoftReference）"></a>软引用（SoftReference）</h3></li>
+<li>如果一个对象只具有软引用，则内存空间足够，垃圾回收器就不会回收它；如果内存空间不足了，就会回收这些对象的内存。只要垃圾回收器没有回收它，该对象就可以被程序使用。软引用可用来实现内存敏感的高速缓存。软引用可以和一个引用队列（ReferenceQueue）联合使用，如果软引用所引用的对象被垃圾回收器回收，Java虚拟机就会把这个软引用加入到与之关联的引用队列中。<h3 id="弱引用（WeakReference）"><a href="#弱引用（WeakReference）" class="headerlink" title="弱引用（WeakReference）"></a>弱引用（WeakReference）</h3></li>
+<li>弱引用与软引用的区别在于：只具有弱引用的对象拥有更短暂的生命周期。在垃圾回收器线程扫描它所管辖的内存区域的过程中，一旦发现了只具有弱引用的对象，不管当前内存空间足够与否，都会回收它的内存。不过，由于垃圾回收器是一个优先级很低的线程，因此不一定会很快发现那些只具有弱引用的对象。</li>
+<li>弱引用可以和一个引用队列（ReferenceQueue）联合使用，如果弱引用所引用的对象被垃圾回收，Java虚拟机就会把这个弱引用加入到与之关联的引用队列中。<h3 id="虚引用（PhantomReference）"><a href="#虚引用（PhantomReference）" class="headerlink" title="虚引用（PhantomReference）"></a>虚引用（PhantomReference）</h3></li>
+<li><p>“虚引用”顾名思义，就是形同虚设，与其他几种引用都不同，虚引用并不会决定对象的生命周期。如果一个对象仅持有虚引用，那么它就和没有任何引用一样，在任何时候都可能被垃圾回收器回收。<br>虚引用主要用来跟踪对象被垃圾回收器回收的活动。虚引用与软引用和弱引用的一个区别在于：虚引用必须和引用队列 （ReferenceQueue）联合使用。当垃圾回收器准备回收一个对象时，如果发现它还有虚引用，就会在回收对象的内存之前，把这个虚引用加入到与之 关联的引用队列中。</p>
+<pre><code>ReferenceQueue queue = new ReferenceQueue ();
+PhantomReference pr = new PhantomReference (object, queue); 
+</code></pre></li>
+</ul>
+<p>程序可以通过判断引用队列中是否已经加入了虚引用，来了解被引用的对象是否将要被垃圾回收。如果程序发现某个虚引用已经被加入到引用队列，那么就可以在所引用的对象的内存被回收之前采取必要的行动。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Java/">Java</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Java/">Java</a><a href="/tags/引用/">引用</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2016/03/29/a/" title="Hello World" itemprop="url">Hello World</a>
   </h1>
   <p class="article-author">By
@@ -88,7 +158,7 @@
 		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-28T16:42:40.302Z" itemprop="datePublished"> 发表于 2016-03-29</time>
+    <time datetime="2016-03-28T16:42:40.302Z" itemprop="datePublished"> Published 2016-03-29</time>
     
   </p>
 </header>
@@ -146,7 +216,7 @@
 		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-28T15:45:13.188Z" itemprop="datePublished"> 发表于 2016-03-28</time>
+    <time datetime="2016-03-28T15:45:13.188Z" itemprop="datePublished"> Published 2016-03-28</time>
     
   </p>
 </header>
@@ -191,23 +261,1117 @@
 
 
 
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/27/Java线程池的分析与使用/" title="Java线程池的分析与使用" itemprop="url">Java线程池的分析与使用</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-27T08:26:08.000Z" itemprop="datePublished"> Published 2016-03-27</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="为什么需要使用线程池"><a href="#为什么需要使用线程池" class="headerlink" title="为什么需要使用线程池"></a>为什么需要使用线程池</h2><ul>
+<li>降低资源消耗。通过重复利用已创建的线程降低线程创建和销毁造成的消耗</li>
+<li>提高响应速度。当任务到达时，任务可以不需要等到线程创建就能立即执行</li>
+<li>提高线程的可管理性。线程是稀缺资源，如果无限制的创建，不仅会消耗系统资源，还会降低系统的稳定性，使用线程次可以进行统一的分配，调优和监控。</li>
+</ul>
+<h2 id="线程池的创建"><a href="#线程池的创建" class="headerlink" title="线程池的创建"></a>线程池的创建</h2><ul>
+<li>我们可以通过ThreadPoolExecutor来创建一个线程池。</li>
+<li><code>new  ThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime, milliseconds,runnableTaskQueue, handler);</code></li>
+<li><p>需要的几个参数：</p>
+<ul>
+<li>corePoolSize（线程池的基本大小）：<ul>
+<li>当提交一个任务到线程池时，线程池会创建一个线程来执行任务，</li>
+<li>即使其他空闲的基本线程能够执行新任务也会创建线程，</li>
+<li>等到需要执行的任务数大于线程池基本大小时就不再创建。</li>
+<li>如果调用了线程池的prestartAllCoreThreads方法，线程池会提前创建并启动所有基本线程。</li>
+</ul>
+</li>
+<li><p>runnableTaskQueue（任务队列：用于保存等待执行的任务的阻塞队列。</p>
+<ul>
+<li>ArrayBlockingQueue：基于数组，有界，FIFO</li>
+<li>LinkedBlockingQueue：基于链表，FIFO，吞吐量高于ArrayBlockingQueue，静态工厂方法Executors.newFixedThreadPool()使用了这个队列</li>
+<li>SynchronousQueue：不存储元素，插入操作须等到另一个线程调用移除操作，吞吐量高于LinkedBlockingQueue，静态工厂方法Executors.newCachedThreadPool使用了这个队列</li>
+<li>PriorityBlockingQueue：一个具有优先级的无限阻塞队列</li>
+</ul>
+</li>
+<li><p>maximumPoolSize（线程池最大大小）：线程池允许创建的最大线程数。如果队列满了，并且已创建的线程数小于最大线程数，则线程池会再创建新的线程执行任务。无界任务队列无效。</p>
+</li>
+<li>ThreadFactory：用于设置创建线程的工厂，可以通过线程工厂给每个创建出来的线程设置更有意义的名字。</li>
+<li>RejectedExecutionHandler（饱和策略）：当队列和线程池都满了，说明线程池处于饱和状态，那么必须采取一种策略处理提交的新任务。这个策略默认情况下是AbortPolicy，表示无法处理新任务时抛出异常。<ul>
+<li>以下是JDK1.5提供的四种策略。<ul>
+<li>AbortPolicy：直接抛出异常。</li>
+<li>CallerRunsPolicy：只用调用者所在线程来运行任务。</li>
+<li>DiscardOldestPolicy：丢弃队列里最近的一个任务，并执行当前任务。</li>
+<li>DiscardPolicy：不处理，丢弃掉。</li>
+</ul>
+</li>
+<li>当然也可以根据应用场景需要来实现RejectedExecutionHandler接口自定义策略。如记录日志或持久化不能处理的任务。</li>
+</ul>
+</li>
+<li>keepAliveTime（线程活动保持时间）：线程池的工作线程空闲后，保持存活的时间。所以如果任务很多，并且每个任务执行的时间比较短，可以调大这个时间，提高线程的利用率。</li>
+<li>TimeUnit（线程活动保持时间的单位）：<ul>
+<li>可选的单位有天（DAYS），小时（HOURS），</li>
+<li>分钟（MINUTES），毫秒(MILLISECONDS)，</li>
+<li>微秒(MICROSECONDS, 千分之一毫秒)和毫微秒(NANOSECONDS, 千分之一微秒)。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="向线程池提交任务"><a href="#向线程池提交任务" class="headerlink" title="向线程池提交任务"></a>向线程池提交任务</h2><ul>
+<li>execute<ul>
+<li>无返回值，无法判断任务是否被线程执行成功</li>
+</ul>
+</li>
+</ul>
+<hr>
+<pre><code>threadsPool.execute(new Runnable() {
+        @Override
+        public void run() {
+
+        }
+});
+</code></pre><ul>
+<li>submit<ul>
+<li>返回future，以此判断任务是否执行成功</li>
+<li>通过future的get方法来获取返回值，get方法会阻塞直到任务完成</li>
+<li>get(long timeout, TimeUnit unit)方法则会阻塞一段时间后立即返回，这时有可能任务没有执行完</li>
+</ul>
+</li>
+</ul>
+<hr>
+<pre><code>Future&lt;Object&gt; future = executor.submit(harReturnValuetask);
+try {
+     Object s = future.get();
+} catch (InterruptedException e) {
+    // 处理中断异常
+} catch (ExecutionException e) {
+    // 处理无法执行任务异常
+} finally {
+    // 关闭线程池
+    executor.shutdown();
+}
+</code></pre><h2 id="线程池的关闭"><a href="#线程池的关闭" class="headerlink" title="线程池的关闭"></a>线程池的关闭</h2><ul>
+<li>shutdown<ul>
+<li>设置线程池状态为SHUTDOWN，中断暂停任务的线程</li>
+</ul>
+</li>
+<li>shutdownNow<ul>
+<li>设置线程池状态为STOP，中断正在执行或暂停任务的线程</li>
+<li>返回等待执行任务的列表</li>
+</ul>
+</li>
+<li>都是遍历线程池中的工作线程，逐个调用线程的interrupt方法来中断线程，所以无法响应中断的任务可能永远无法终止</li>
+<li>通常调用shutdown来关闭线程池，如果任务不一定要执行完，则可以调用shutdownNow</li>
+</ul>
+<h2 id="线程池的分析"><a href="#线程池的分析" class="headerlink" title="线程池的分析"></a>线程池的分析</h2><ul>
+<li>工作流程如图:<br><img src="http://i.imgur.com/V4f7nHh.jpg" alt="线程池工作流程图"></li>
+<li>提交一个新任务到线程池时，线程池处理流程如下：<ul>
+<li>首先线程池判断<strong>基本线程池</strong>是否已满？没满，创建一个工作线程来执行任务。满了，则进入下个流程。</li>
+<li>其次线程池判断<strong>工作队列</strong>是否已满？没满，则将新提交的任务存储在工作队列里。满了，则进入下个流程。</li>
+<li>最后线程池判断<strong>整个线程池</strong>是否已满？没满，则创建一个新的工作线程来执行任务，满了，则交给饱和策略来处理这个任务。</li>
+</ul>
+</li>
+<li>源码实现</li>
+</ul>
+<hr>
+<pre><code>public void execute(Runnable command) {
+    if (command == null){
+       throw new NullPointerException();
+    }
+    //如果线程数小于基本线程数，则创建线程并执行当前任务 
+    if (poolSize &gt;= corePoolSize || !addIfUnderCorePoolSize(command)) {
+    //如线程数大于等于基本线程数或线程创建失败，则将当前任务放到工作队列中。
+        if (runState == RUNNING &amp;&amp; workQueue.offer(command)) {
+            if (runState != RUNNING || poolSize == 0)
+                      ensureQueuedTaskHandled(command);
+        }
+    //如果线程池不处于运行中或任务无法放入队列，并且当前线程数量小于最大允许的线程数量，则创建一个线程执行任务。
+        else if (!addIfUnderMaximumPoolSize(command))
+            //抛出RejectedExecutionException异常
+            reject(command);     // is shutdown or saturated
+    }
+}
+</code></pre><ul>
+<li>工作线程：<ul>
+<li>线程池创建线程时，会将线程封装成工作线程Worker，Worker在执行完任务后，还会无限循环获取工作队列里的任务来执行。</li>
+<li>我们可以从Worker类的run方法里看到这点</li>
+</ul>
+</li>
+</ul>
+<hr>
+<pre><code>public void run() {
+     try {
+           Runnable task = firstTask;
+           firstTask = null;
+            while (task != null || (task = getTask()) != null) {
+                    runTask(task);
+                    task = null;
+            }
+      } finally {
+             workerDone(this);
+      }
+} 
+</code></pre><h2 id="合理的配置线程池"><a href="#合理的配置线程池" class="headerlink" title="合理的配置线程池"></a>合理的配置线程池</h2><ul>
+<li>任务特性<ul>
+<li>任务的性质：<ul>
+<li>CPU密集型任务</li>
+<li>IO密集型任务</li>
+<li>混合型任务</li>
+</ul>
+</li>
+<li>任务的优先级：高，中，低</li>
+<li>任务的执行时间：长，中，短</li>
+<li>任务的依赖性：是否依赖其他系统资源，如数据库连接</li>
+</ul>
+</li>
+<li>如何为不同特性的任务配置线程池<ul>
+<li>性质不同，用不同规模的线程池分开处理<ul>
+<li>CPU密集型任务配置尽可能小的线程，如配置Ncpu+1个线程的线程池。</li>
+<li>IO密集型任务则由于线程并不是一直在执行任务，则配置尽可能多的线程，如2*Ncpu</li>
+<li>混合型的任务，如果可以拆分，则将其拆分成一个CPU密集型任务和一个IO密集型任务，只要这两个任务执行的时间相差不是太大，那么分解后执行的吞吐率要高于串行执行的吞吐率，如果这两个任务执行时间相差太大，则没必要进行分解。我们可以通过Runtime.getRuntime().availableProcessors()方法获得当前设备的CPU个数。</li>
+</ul>
+</li>
+<li>优先级不同，用优先级队列PriorityBlockingQueue来处理<ul>
+<li>让优先级高的任务先得到执行</li>
+<li>需要注意的是如果一直有优先级高的任务提交到队列里</li>
+<li>那么优先级低的任务可能永远不能执行</li>
+</ul>
+</li>
+<li>执行时间不同，可以交给不同规模的线程池来处理，或者也可以使用优先级队列，让执行时间短的任务先执行。</li>
+<li>依赖数据库连接池的任务，因为线程提交SQL后需要等待数据库返回结果，如果等待的时间越长CPU空闲时间就越长，那么线程数应该设置越大，这样才能更好的利用CPU。</li>
+<li>建议使用有界队列。<ul>
+<li>有界队列能增加系统的稳定性和预警能力，可以根据需要设大一点，比如几千</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="线程池的监控"><a href="#线程池的监控" class="headerlink" title="线程池的监控"></a>线程池的监控</h2><ul>
+<li><p>通过线程池提供的参数进行监控。线程池里有一些属性在监控线程池的时候可以使用</p>
+<ul>
+<li>taskCount：线程池需要执行的任务数量</li>
+<li>completedTaskCount：线程池在运行过程中已完成的任务数量，小于或等于taskCount</li>
+<li>largestPoolSize：线程池曾经创建过的最大线程数量。通过这个数据可以知道线程池是否满过。如等于线程池的最大大小，则表示线程池曾经满了</li>
+<li>getPoolSize：线程池的线程数量。如果线程池不销毁的话，池里的线程不会自动销毁，所以这个大小只增不减</li>
+<li>getActiveCount：获取活动的线程数</li>
+</ul>
+</li>
+<li><p>通过扩展线程池进行监控</p>
+<ul>
+<li>通过继承线程池并重写线程池的beforeExecute，afterExecute和terminated方法。</li>
+<li>我们可以在任务执行前，执行后和线程池关闭前干一些事情。比如：<ul>
+<li>监控任务的平均执行时间</li>
+<li>最大执行时间</li>
+<li>最小执行时间</li>
+</ul>
+</li>
+<li>这几个方法在线程池里是空方法。如：<ul>
+<li><code>protected void beforeExecute(Thread t, Runnable r) { }</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Java/">Java</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Java/">Java</a><a href="/tags/线程/">线程</a><a href="/tags/线程池/">线程池</a><a href="/tags/并发/">并发</a>
+  </div>
 
 </div>
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/27/剑指Offer之二十--顺时针打印矩阵/" title="剑指Offer之二十--顺时针打印矩阵" itemprop="url">剑指Offer之二十--顺时针打印矩阵</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-27T06:13:41.000Z" itemprop="datePublished"> Published 2016-03-27</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><ul>
+<li>输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字</li>
+<li>例如，如果输入如下矩阵：<ul>
+<li>1　　2　　3　　4</li>
+<li>5　　6　　7　　8 </li>
+<li>9　　10　11　 12 </li>
+<li>13　 14 　15 　16</li>
+</ul>
+</li>
+<li>则依次打印出数字<ul>
+<li>1,2,3,4,</li>
+<li>8,12,16,</li>
+<li>15,14,13,</li>
+<li>9,5,</li>
+<li>6,7,</li>
+<li>11,</li>
+<li>10</li>
+</ul>
+</li>
+</ul>
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><ul>
+<li>因为每打印一圈都会改变起始坐标，所以需要先确定矩阵大小与起始坐标的关系<ul>
+<li>比如4阶矩阵，第一圈起始坐标为(0,0)，第二圈起始坐标为(1,1)，打印两圈之后就结束了</li>
+<li>比如一个5阶矩阵，前两圈同4阶，第三圈为(2,2)，而且只打印了一个数。</li>
+<li>会发现，只要起始坐标的两倍小于阶数，就会一直转圈打印</li>
+<li>所以停止转圈打印的条件就是起始坐标的2倍大于或者等于阶数</li>
+</ul>
+</li>
+<li>然后考虑每一圈的打印方法<ul>
+<li>第一步:从左到右打印一行</li>
+<li>第二步：从上到下打印一列（需满足终止行号大于起始行号）</li>
+<li>第三步：从右到左打印一列（需满足终止行号大于起始行号的同时，终止列号大于起始列号）</li>
+<li>第四步：从下到上打印一列（需满足终止行号比起始行号大2，终止列号大于起始列号）</li>
+<li>注意：打印矩阵最里面一圈可能只需要三步、两步、甚至一步</li>
+</ul>
+</li>
+</ul>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><pre><code>public ArrayList&lt;Integer&gt; printMatrix(int [][] matrix) {
+
+    if(matrix == null || matrix.length &lt;= 0 || matrix[0].length &lt;= 0){
+        return null;
+    }
+
+    ArrayList&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;();
+    int rows = matrix.length;
+    int cols = matrix[0].length;
+    //起点坐标
+    int start = 0;
+
+    while(rows &gt; 2 * start &amp;&amp; cols &gt; 2 * start){
+        printMatrixInCircle(list,matrix,rows,cols,start);
+        start++;
+    }
+
+    return list;
+}
+
+/**
+ * 打印每一圈
+ * @param list        返回的集合
+ * @param matrix    矩阵
+ * @param rows        行数
+ * @param cols        列数
+ * @param start        起点坐标
+ */
+private void printMatrixInCircle(ArrayList&lt;Integer&gt; list, int[][] matrix, int rows, int cols, int start) {
+
+    //endX为终止行号，endY为终止列号
+    int endX = rows - start - 1;
+    int endY = cols - start - 1;
+
+    //从左到右的一行
+    for(int i = start; i &lt;= endY; i++){
+        list.add(matrix[start][i]);
+    }
+
+    //从上到下的一行
+    if(endX &gt; start){
+        for(int i = start + 1; i &lt;= endX; i++){
+            list.add(matrix[i][endY]);
+        }
+    }
+
+    //从右到左的一行
+    if(endX &gt; start &amp;&amp; endY &gt; start){
+        for(int i = endY - 1; i &gt;= start; i--){
+            list.add(matrix[endX][i]);
+        }
+    }
+
+    //从下到上的一行
+    if(endX - 1 &gt; start &amp;&amp; endY &gt; start){
+        for(int i = endX - 1; i &gt;= start + 1; i--){
+            list.add(matrix[i][start]);
+        }
+    }
+
+
+}    
+</code></pre>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/算法/">算法</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Java/">Java</a><a href="/tags/矩阵/">矩阵</a><a href="/tags/顺时针/">顺时针</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/27/剑指Offer之二十一--包含min函数的栈/" title="剑指Offer之二十一--包含min函数的栈" itemprop="url">剑指Offer之二十一--包含min函数的栈</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-27T06:13:41.000Z" itemprop="datePublished"> Published 2016-03-27</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><ul>
+<li>定义栈的数据结构，请在该类型中实现一个能够得到栈最小元素的min函数。</li>
+</ul>
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><ul>
+<li>在数据栈的基础上维护一个用来存放最小值的辅助栈</li>
+<li>每次入栈，新入栈的元素都要和辅助栈栈顶元素比较，如果新入栈的元素更小，就让它也加入最小栈中，否则最小栈再次压入其栈顶元素</li>
+<li>每次出栈，数据栈和辅助栈同时弹出元素</li>
+<li>这样就可以保证在任何情况下，辅助栈栈顶元素始终是数据栈中的最小元素</li>
+</ul>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><pre><code>public class MinFunctionStack{
+
+    Stack&lt;Integer&gt; data = new Stack&lt;Integer&gt;();
+    Stack&lt;Integer&gt; assist = new Stack&lt;Integer&gt;();
+
+    public void push(int node) {
+        data.push(node);
+        if(assist.size() == 0 || node &lt; assist.peek()){
+            assist.push(node);
+        }else{
+            assist.push(assist.peek());
+        }
+    }
+
+    public void pop() {
+        if(data.size() &gt; 0 &amp;&amp; assist.size() &gt; 0){
+            data.pop();
+            assist.pop();
+        }
+    }
+
+    public int top() {
+        if(data.size() &gt; 0){
+            return data.peek();
+        }
+        return Integer.MIN_VALUE;
+
+    }
+
+    public int min() {
+        if(data.size() &gt; 0 &amp;&amp; assist.size() &gt; 0){
+            return assist.peek();
+        }
+        return Integer.MIN_VALUE;
+    }
+
+}
+</code></pre>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/算法/">算法</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Java/">Java</a><a href="/tags/栈/">栈</a><a href="/tags/最小值/">最小值</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/27/剑指Offer之十九-二叉树的镜像/" title="剑指Offer之十九--二叉树的镜像" itemprop="url">剑指Offer之十九--二叉树的镜像</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-27T04:13:41.000Z" itemprop="datePublished"> Published 2016-03-27</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="二叉树结构"><a href="#二叉树结构" class="headerlink" title="二叉树结构"></a>二叉树结构</h2><pre><code>class TreeNode {
+    int val = 0;
+    TreeNode left = null;
+    TreeNode right = null;
+
+    public TreeNode(int val) {
+        this.val = val;
+    }
+}
+</code></pre><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><ul>
+<li>请完成一个函数，输入一个二叉树，输出它的镜像</li>
+<li>二叉树镜像定义<ul>
+<li>源二叉树<br><br><img src="http://i.imgur.com/N0XGChb.png" alt="源二叉树"></li>
+<li>镜像二叉树<br><br><img src="http://i.imgur.com/xBszDuD.png" alt="镜像二叉树"></li>
+</ul>
+</li>
+</ul>
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><ul>
+<li>先序遍历给定树的每个结点</li>
+<li>若遍历到的结点有子节点，就交换它的两个子结点</li>
+<li>当交换完所有非叶子结点的左右子节点之后，就得到了树的镜像</li>
+</ul>
+<h2 id="递归实现"><a href="#递归实现" class="headerlink" title="递归实现"></a>递归实现</h2><pre><code>public void mirror(TreeNode root) {
+    if(root == null || (root.left == null &amp;&amp; root.right == null)){
+        return ;
+    }
+
+
+    TreeNode temp = root.left;
+    root.left = root.right;
+    root.right = temp;
+
+    if(root.left != null){
+        mirror(root.left);
+    }
+
+    if(root.right != null){
+        mirror(root.right);
+    }
+}
+</code></pre><h2 id="非递归实现"><a href="#非递归实现" class="headerlink" title="非递归实现"></a>非递归实现</h2><pre><code>public void mirror2(TreeNode root) {
+    if(root == null || (root.left == null &amp;&amp; root.right == null)){
+        return ;
+    }
+
+    Stack&lt;TreeNode&gt; s = new Stack&lt;TreeNode&gt;();
+    s.push(root);
+    while(!s.isEmpty()){
+        TreeNode node = s.pop();
+
+        //交换左右孩子结点
+        TreeNode nodeTemp = node.left;
+        node.left = node.right;
+        node.right = nodeTemp;
+
+        //遍历左子树
+        if(node.left != null){
+            s.push(node.left);
+        }
+
+        //遍历右子树
+        if(node.right != null){
+            s.push(node.right);
+        }
+
+    }
+}
+</code></pre>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/算法/">算法</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Java/">Java</a><a href="/tags/树/">树</a><a href="/tags/镜像/">镜像</a><a href="/tags/二叉树/">二叉树</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/27/剑指Offer之十八--树的子结构/" title="剑指Offer之十八--树的子结构" itemprop="url">剑指Offer之十八--树的子结构</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-27T01:18:30.000Z" itemprop="datePublished"> Published 2016-03-27</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="二叉树结构"><a href="#二叉树结构" class="headerlink" title="二叉树结构"></a>二叉树结构</h2><pre><code>class TreeNode {
+    int val = 0;
+    TreeNode left = null;
+    TreeNode right = null;
+
+    public TreeNode(int val) {
+        this.val = val;
+    }
+}
+</code></pre><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><ul>
+<li>输入两颗二叉树A，B，判断B是不是A的子结构</li>
+</ul>
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><ul>
+<li>二叉树遍历算法的应用</li>
+<li>原二叉树是否具有某棵子树，只需要判断每个结点是否都在二叉树中出现即可</li>
+<li>第一步在树A中找到和B的根结点的值一样的结点R</li>
+<li>第二步再判断树A中以R为根结点的子树是不是包含和树B一样的结构</li>
+</ul>
+<h2 id="递归实现"><a href="#递归实现" class="headerlink" title="递归实现"></a>递归实现</h2><pre><code>//判断根结点为root1的树是否包含root2结构
+public boolean hasSubtree(TreeNode root1,TreeNode root2) {
+    //初始化标记变量为false
+    boolean hasSubtreeFlag = false;
+
+    //先判断根结点，若不包含判断左孩子，其次是右孩子
+    if(root1 != null &amp;&amp; root2 != null){
+        if(root1.val == root2.val){
+            hasSubtreeFlag = nodesValEqual(root1,root2);
+        }
+        if(!hasSubtreeFlag){
+            hasSubtreeFlag = hasSubtree(root1.left,root2);
+        }
+        if(!hasSubtreeFlag){
+            hasSubtreeFlag = hasSubtree(root1.right,root2);
+        }
+    }
+
+    return hasSubtreeFlag;
+}
+
+//判断以root1为根的树上各结点值是否与root2相等
+public  boolean nodesValEqual(TreeNode root1, TreeNode root2) {
+
+    if(root2 == null){
+        return true;
+    }
+    if(root1 == null){
+        return false;
+    }
+    if(root1.val != root2.val){
+        return false;
+    }
+
+    return nodesValEqual(root1.left,root2.left) &amp;&amp; nodesValEqual(root1.right,root2.right);
+}
+</code></pre>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/算法/">算法</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Java/">Java</a><a href="/tags/树/">树</a><a href="/tags/二叉树/">二叉树</a><a href="/tags/遍历/">遍历</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/26/剑指Offer之十四--调整数组顺序使奇数位于偶数前面/" title="剑指Offer之十四--调整数组顺序使奇数位于偶数前面" itemprop="url">剑指Offer之十四--调整数组顺序使奇数位于偶数前面</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-26T08:18:30.000Z" itemprop="datePublished"> Published 2016-03-26</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="基本解法"><a href="#基本解法" class="headerlink" title="基本解法"></a>基本解法</h2><ul>
+<li>保证奇数和奇数，偶数和偶数之间的相对位置不变</li>
+<li>遍历每个元素，一旦发现偶数就取出来，让它之后的元素向前移动，把取出来的元素补到最后的空位上</li>
+<li>类似插入排序，具体实现是外循环找奇数，内循环将该数之前的偶数移位</li>
+</ul>
+<hr>
+<pre><code>public static void reOrderArray(int array[]){
+
+    if(array == null || array.length == 0){
+        return;
+    }
+
+    for(int i = 1; i &lt; array.length; i++){
+        int current = array[i];
+        if(!isEven(current)){        //找到奇数位置
+            int j = i - 1;            //从奇数前一个位置开始
+            for(; j &gt;= 0 &amp;&amp; isEven(array[j]); j--){    //发现偶数就移位
+                array[j + 1] = array[j];
+            }
+            array[j + 1] = current;        //把奇数插入到偶数前面
+        }
+    }
+}
+</code></pre><h2 id="高效解法"><a href="#高效解法" class="headerlink" title="高效解法"></a>高效解法</h2><ul>
+<li>相对位置可以改变时，更为高效的解法</li>
+<li>维护两个指针，一首一尾</li>
+<li>首指针向后遍历，检测到偶数时暂停，尾指针向前遍历，检测到奇数时暂停</li>
+<li>交换首尾两个数</li>
+<li>继续这样的判断，直到首尾指针相遇。</li>
+</ul>
+<hr>
+<pre><code>public static void reOrderArray2(int array[]){
+
+    int low = 0;
+    int high = array.length - 1;
+    while(low &lt; high){
+        while(low &lt; high &amp;&amp; !isEven(array[low])){
+            low++;
+        }
+        while(low &lt; high &amp;&amp; isEven(array[high])){
+            high--;
+        }
+        if(low &lt; high){
+            int temp = array[low];
+            array[low] = array[high];
+            array[high] = temp;
+        }
+
+
+    }
+
+}
+</code></pre><h2 id="判断一个数是否为偶数"><a href="#判断一个数是否为偶数" class="headerlink" title="判断一个数是否为偶数"></a>判断一个数是否为偶数</h2><pre><code>public static boolean isEven(int i){
+    return (i &amp; 0x1) == 0;
+}
+</code></pre>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/算法/">算法</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Java/">Java</a><a href="/tags/排序/">排序</a><a href="/tags/数组/">数组</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/26/剑指Offer之十六--链表反转/" title="剑指Offer之十六--链表反转" itemprop="url">剑指Offer之十六--链表反转</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-26T08:18:30.000Z" itemprop="datePublished"> Published 2016-03-26</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="链表结点结构"><a href="#链表结点结构" class="headerlink" title="链表结点结构"></a>链表结点结构</h2><pre><code>class ListNode{
+    int value;
+    ListNode next = null;
+    public ListNode(int value){
+        this.value = value;
+    }
+}
+</code></pre><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><ul>
+<li>输入一个链表的头结点，反转该链表并输出翻转后的头结点</li>
+</ul>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><ul>
+<li>遍历该链表</li>
+<li>保存后一个结点，以防止当前结点的next值更新后链表断开</li>
+<li>保存前一个结点，以便当前结点的next值更新为前一个结点</li>
+<li>最后一个结点将是反转之后的头结点，保存该结点返回</li>
+</ul>
+<hr>
+<pre><code>public static ListNode reverseList(ListNode head) {
+
+    ListNode reverseListHead = null;
+    ListNode curNode = head;
+    ListNode preNode = null;
+    ListNode nextNode = null;
+
+    while(curNode != null){
+        nextNode = curNode.next;
+        if(nextNode == null){
+            reverseListHead = curNode;
+        }
+
+        curNode.next = preNode;
+        preNode = curNode;
+        curNode = nextNode;
+
+    }
+
+    return reverseListHead;
+}
+</code></pre>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/算法/">算法</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Java/">Java</a><a href="/tags/链表/">链表</a><a href="/tags/反转/">反转</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+
+  <nav id="page-nav" class="clearfix">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
+  </nav>
+
+</div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
 
 
   
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Java/" title="Java">Java<sup>9</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据库/" title="数据库">数据库<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/算法/" title="算法">算法<sup>12</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/网络/" title="网络">网络<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
 
   
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>20</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/排序/" title="排序">排序<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JVM/" title="JVM">JVM<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/链表/" title="链表">链表<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MySQL/" title="MySQL">MySQL<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/树/" title="树">树<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/二叉树/" title="二叉树">二叉树<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/查找/" title="查找">查找<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/数据库/" title="数据库">数据库<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/递归/" title="递归">递归<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/存储引擎/" title="存储引擎">存储引擎<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/网络/" title="网络">网络<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/TCP/" title="TCP">TCP<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Hashtable/" title="Hashtable">Hashtable<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ConcurrentHashMap/" title="ConcurrentHashMap">ConcurrentHashMap<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/线程/" title="线程">线程<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/线程池/" title="线程池">线程池<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/并发/" title="并发">并发<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/HashMap/" title="HashMap">HashMap<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/内存区域/" title="内存区域">内存区域<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
 
   <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -229,11 +1393,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -383,7 +1547,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

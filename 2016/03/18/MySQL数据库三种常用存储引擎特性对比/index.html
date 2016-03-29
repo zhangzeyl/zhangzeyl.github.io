@@ -1,0 +1,680 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>MySQL数据库三种常用存储引擎特性对比 | Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="John Doe">
+    
+
+    
+    <meta name="description" content="什么叫存储引擎？
+MySQL中的数据用各种不同的技术存储在文件（或内存）中，这些技术中的每一种技术都使用不同的存储机制，索引技巧，锁定水平并且最终提供广泛的不同功能和能力。
+在MySQL中将这些不同的技术及配套的相关功能称为存储引擎。
+
+MySQL存储引擎特点
+不仅可以同时使用多种存储引擎，
+而且每种存储引擎和MySQL之间使用插件方式这种非常松的耦合关系。
+
+MyISAM
+特性：
+不支持事务：M">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL数据库三种常用存储引擎特性对比">
+<meta property="og:url" content="http://yoursite.com/2016/03/18/MySQL数据库三种常用存储引擎特性对比/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="什么叫存储引擎？
+MySQL中的数据用各种不同的技术存储在文件（或内存）中，这些技术中的每一种技术都使用不同的存储机制，索引技巧，锁定水平并且最终提供广泛的不同功能和能力。
+在MySQL中将这些不同的技术及配套的相关功能称为存储引擎。
+
+MySQL存储引擎特点
+不仅可以同时使用多种存储引擎，
+而且每种存储引擎和MySQL之间使用插件方式这种非常松的耦合关系。
+
+MyISAM
+特性：
+不支持事务：M">
+<meta property="og:updated_time" content="2016-03-29T11:21:59.771Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL数据库三种常用存储引擎特性对比">
+<meta name="twitter:description" content="什么叫存储引擎？
+MySQL中的数据用各种不同的技术存储在文件（或内存）中，这些技术中的每一种技术都使用不同的存储机制，索引技巧，锁定水平并且最终提供广泛的不同功能和能力。
+在MySQL中将这些不同的技术及配套的相关功能称为存储引擎。
+
+MySQL存储引擎特点
+不仅可以同时使用多种存储引擎，
+而且每种存储引擎和MySQL之间使用插件方式这种非常松的耦合关系。
+
+MyISAM
+特性：
+不支持事务：M">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/18/MySQL数据库三种常用存储引擎特性对比/" title="MySQL数据库三种常用存储引擎特性对比" itemprop="url">MySQL数据库三种常用存储引擎特性对比</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-18T12:43:46.000Z" itemprop="datePublished"> Published 2016-03-18</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么叫存储引擎？"><span class="toc-number">1.</span> <span class="toc-text">什么叫存储引擎？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL存储引擎特点"><span class="toc-number">2.</span> <span class="toc-text">MySQL存储引擎特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MyISAM"><span class="toc-number">3.</span> <span class="toc-text">MyISAM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#InnoDB"><span class="toc-number">4.</span> <span class="toc-text">InnoDB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NDBCluster"><span class="toc-number">5.</span> <span class="toc-text">NDBCluster</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="什么叫存储引擎？"><a href="#什么叫存储引擎？" class="headerlink" title="什么叫存储引擎？"></a>什么叫存储引擎？</h2><ul>
+<li>MySQL中的数据用各种不同的技术存储在文件（或内存）中，这些技术中的每一种技术都使用不同的存储机制，索引技巧，锁定水平并且最终提供广泛的不同功能和能力。</li>
+<li>在MySQL中将这些不同的技术及配套的相关功能称为存储引擎。</li>
+</ul>
+<h2 id="MySQL存储引擎特点"><a href="#MySQL存储引擎特点" class="headerlink" title="MySQL存储引擎特点"></a>MySQL存储引擎特点</h2><ul>
+<li>不仅可以同时使用多种存储引擎，</li>
+<li>而且每种存储引擎和MySQL之间使用插件方式这种非常松的耦合关系。</li>
+</ul>
+<h2 id="MyISAM"><a href="#MyISAM" class="headerlink" title="MyISAM"></a>MyISAM</h2><ul>
+<li>特性：<ul>
+<li>不支持事务：MyISAM存储引擎不支持事务，所以对事务有要求的业务场景不能使用</li>
+<li>表级锁定：其锁定机制是表级索引，这虽然可以让锁定的实现成本很小但是也同时大大降低了其并发性能</li>
+<li>读写互相阻塞：不仅会在写入的时候阻塞读取，MyISAM还会在读取的时候阻塞写入，但读本身并不会阻塞另外的读</li>
+<li>只会缓存索引：MyISAM可以通过key_buffer缓存以大大提高访问性能减少磁盘IO，但是这个缓存区只会缓存索引，而不会缓存数据</li>
+</ul>
+</li>
+<li>适用场景<ul>
+<li>不需要事务支持（不支持）</li>
+<li>并发相对较低（锁定机制问题）</li>
+<li>数据修改相对较少（阻塞问题）</li>
+<li>以读为主</li>
+<li>数据一致性要求不是非常高</li>
+</ul>
+</li>
+<li>最佳实践<ul>
+<li>尽量索引（缓存机制）</li>
+<li>调整读写优先级，根据实际需求确保重要操作更优先</li>
+<li>启用延迟插入改善大批量写入性能</li>
+<li>尽量顺序操作让insert数据都写入到尾部，减少阻塞</li>
+<li>分解大的操作，降低单个操作的阻塞时间</li>
+<li>降低并发数，某些高并发场景通过应用来进行排队机制</li>
+<li>对于相对静态的数据，充分利用Query Cache可以极大的提高访问效率</li>
+<li>MyISAM的Count只有在全表扫描的时候特别高效，带有其他条件的count都需要进行实际的数据访问</li>
+</ul>
+</li>
+</ul>
+<h2 id="InnoDB"><a href="#InnoDB" class="headerlink" title="InnoDB"></a>InnoDB</h2><ul>
+<li>特性<ul>
+<li>具有较好的事务支持：支持4个事务隔离级别，支持多版本读</li>
+<li>行级锁定：通过索引实现，全表扫描仍然会是表锁，注意间隙锁的影响</li>
+<li>读写阻塞与事务隔离级别相关</li>
+<li>具有非常高效的缓存特性：能缓存索引，也能缓存数据</li>
+<li>整个表和主键以Cluster方式存储，组成一颗平衡树</li>
+<li>所有Secondary Index都会保存主键信息</li>
+</ul>
+</li>
+<li>适用场景<ul>
+<li>需要事务支持（具有较好的事务特性）</li>
+<li>行级锁定对高并发有很好的适应能力，但需要确保查询是通过索引完成</li>
+<li>数据更新较为频繁的场景</li>
+<li>数据一致性要求较高</li>
+<li>硬件设备内存较大，可以利用InnoDB较好的缓存能力来提高内存利用率，尽可能减少磁盘 IO</li>
+</ul>
+</li>
+<li>最佳实践<ul>
+<li>主键尽可能小，避免给Secondary index带来过大的空间负担</li>
+<li>避免全表扫描，因为会使用表锁</li>
+<li>尽可能缓存所有的索引和数据，提高响应速度</li>
+<li>在大批量小插入的时候，尽量自己控制事务而不要使用autocommit自动提交</li>
+<li>合理设置innodb_flush_log_at_trx_commit参数值，不要过度追求安全性</li>
+<li>避免主键更新，因为这会带来大量的数据移动</li>
+</ul>
+</li>
+</ul>
+<h2 id="NDBCluster"><a href="#NDBCluster" class="headerlink" title="NDBCluster"></a>NDBCluster</h2><ul>
+<li>特性<ul>
+<li>分布式：分布式存储引擎，可以由多个NDBCluster存储引擎组成集群分别存放整体数据的一部分</li>
+<li>支持事务：和Innodb一样，支持事务</li>
+<li>可与mysqld不在一台主机：可以和mysqld分开存在于独立的主机上，然后通过网络和mysqld通信交互</li>
+<li>内存需求量巨大：新版本索引以及被索引的数据必须存放在内存中，老版本所有数据和索引必须存在与内存中</li>
+</ul>
+</li>
+<li>适用场景<ul>
+<li>具有非常高的并发需求</li>
+<li>对单个请求的响应并不是非常的critical</li>
+<li>查询简单，过滤条件较为固定，每次请求数据量较少，又不希望自己进行水平Sharding</li>
+</ul>
+</li>
+<li>最佳实践<ul>
+<li>尽可能让查询简单，避免数据的跨节点传输</li>
+<li>尽可能满足SQL节点的计算性能，大一点的集群SQL节点会明显多余Data节点</li>
+<li>在各节点之间尽可能使用万兆网络环境互联，以减少数据在网络层传输过程中的延时<br>注：以上三个存储引擎是目前相对主流的存储引擎，还有其他类似如：Memory，Merge，CSV，Archive等存储引擎的使用场景都相对较少。</li>
+</ul>
+</li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/数据库/">数据库</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/数据库/">数据库</a><a href="/tags/MySQL/">MySQL</a><a href="/tags/存储引擎/">存储引擎</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2016/03/18/MySQL数据库三种常用存储引擎特性对比/" data-title="MySQL数据库三种常用存储引擎特性对比 | Hexo" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/03/20/Java安全之对称加密、非对称加密、数字签名/" title="Java安全之对称加密、非对称加密、数字签名">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Java安全之对称加密、非对称加密、数字签名</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/03/18/hashmap的实现/"  title="HashMap实现原理">
+ <strong>下一篇：</strong><br/> 
+ <span>HashMap实现原理
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么叫存储引擎？"><span class="toc-number">1.</span> <span class="toc-text">什么叫存储引擎？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL存储引擎特点"><span class="toc-number">2.</span> <span class="toc-text">MySQL存储引擎特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MyISAM"><span class="toc-number">3.</span> <span class="toc-text">MyISAM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#InnoDB"><span class="toc-number">4.</span> <span class="toc-text">InnoDB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NDBCluster"><span class="toc-number">5.</span> <span class="toc-text">NDBCluster</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Java/" title="Java">Java<sup>9</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据库/" title="数据库">数据库<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/算法/" title="算法">算法<sup>12</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/网络/" title="网络">网络<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>20</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/排序/" title="排序">排序<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JVM/" title="JVM">JVM<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/链表/" title="链表">链表<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MySQL/" title="MySQL">MySQL<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/树/" title="树">树<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/二叉树/" title="二叉树">二叉树<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/查找/" title="查找">查找<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/数据库/" title="数据库">数据库<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/递归/" title="递归">递归<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/存储引擎/" title="存储引擎">存储引擎<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/网络/" title="网络">网络<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/TCP/" title="TCP">TCP<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Hashtable/" title="Hashtable">Hashtable<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ConcurrentHashMap/" title="ConcurrentHashMap">ConcurrentHashMap<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/线程/" title="线程">线程<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/线程池/" title="线程池">线程池<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/并发/" title="并发">并发<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/HashMap/" title="HashMap">HashMap<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/内存区域/" title="内存区域">内存区域<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="John Doe">John Doe</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

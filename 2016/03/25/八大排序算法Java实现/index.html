@@ -1,0 +1,907 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>八大排序算法Java实现 | Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="John Doe">
+    
+
+    
+    <meta name="description" content="冒泡排序/*
+ * 冒泡排序
+ * 相邻元素比较，大的元素往后调
+ */
+public static void bubbleSort(int array[]){
+
+    for(int i = array.length - 1 ; i &amp;gt;= 0 ; i--){
+
+        boolean flag = false;     //设置一趟排序是否有交换的标识
+
+        for(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="八大排序算法Java实现">
+<meta property="og:url" content="http://yoursite.com/2016/03/25/八大排序算法Java实现/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="冒泡排序/*
+ * 冒泡排序
+ * 相邻元素比较，大的元素往后调
+ */
+public static void bubbleSort(int array[]){
+
+    for(int i = array.length - 1 ; i &amp;gt;= 0 ; i--){
+
+        boolean flag = false;     //设置一趟排序是否有交换的标识
+
+        for(">
+<meta property="og:image" content="http://i.imgur.com/yL8k9QH.png">
+<meta property="og:image" content="http://i.imgur.com/GMyVkK6.png">
+<meta property="og:updated_time" content="2016-03-29T11:21:59.778Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="八大排序算法Java实现">
+<meta name="twitter:description" content="冒泡排序/*
+ * 冒泡排序
+ * 相邻元素比较，大的元素往后调
+ */
+public static void bubbleSort(int array[]){
+
+    for(int i = array.length - 1 ; i &amp;gt;= 0 ; i--){
+
+        boolean flag = false;     //设置一趟排序是否有交换的标识
+
+        for(">
+<meta name="twitter:image" content="http://i.imgur.com/yL8k9QH.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/25/八大排序算法Java实现/" title="八大排序算法Java实现" itemprop="url">八大排序算法Java实现</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-25T08:18:30.000Z" itemprop="datePublished"> Published 2016-03-25</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#冒泡排序"><span class="toc-number">1.</span> <span class="toc-text">冒泡排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选择排序"><span class="toc-number">2.</span> <span class="toc-text">选择排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入排序"><span class="toc-number">3.</span> <span class="toc-text">插入排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#快速排序"><span class="toc-number">4.</span> <span class="toc-text">快速排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#归并排序"><span class="toc-number">5.</span> <span class="toc-text">归并排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#希尔排序"><span class="toc-number">6.</span> <span class="toc-text">希尔排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#堆排序"><span class="toc-number">7.</span> <span class="toc-text">堆排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基数排序"><span class="toc-number">8.</span> <span class="toc-text">基数排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通用的swap函数"><span class="toc-number">9.</span> <span class="toc-text">通用的swap函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#性能比较"><span class="toc-number">10.</span> <span class="toc-text">性能比较</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><pre><code>/*
+ * 冒泡排序
+ * 相邻元素比较，大的元素往后调
+ */
+public static void bubbleSort(int array[]){
+
+    for(int i = array.length - 1 ; i &gt;= 0 ; i--){
+
+        boolean flag = false;     //设置一趟排序是否有交换的标识
+
+        for(int j = 0 ; j &lt; i ; j++){   //一趟冒泡排序
+
+            if(array[j] &gt; array[j+1]){
+                swap(array, j, j+1);
+                flag = true;    //标识发生了交换
+            }
+        }
+
+        if(!flag)
+            break;
+    }
+}
+</code></pre><h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><pre><code>/*
+ * 选择排序
+ * 每个位置选择当前元素最小的
+ */
+public static void selectSort(int array[]){
+
+
+    for(int i = 0 ; i &lt; array.length-1 ; i++){
+
+        int minPosition = i;
+        int min = array[i];
+
+        for(int j = i+1 ; j &lt;array.length ; j++){
+
+            if(array[j] &lt; min){
+                min = array[j];
+                minPosition = j;
+            }
+
+        }
+        //若i不是当前元素最小的，则和找到的那个元素交换
+        if(i !=  minPosition){
+            array[minPosition] = array[i];
+            array[i] = min;
+        }
+    }
+}
+</code></pre><h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><pre><code>/*
+ * 插入排序
+ * 已经有序的小序列的基础上，一次插入一个元素
+ */
+public static void insertSort(int array[]){
+
+    for(int i = 1 ; i &lt; array.length ; i++){
+
+        int current = array[i];   //待排元素
+
+        int j = i;
+        for(; j &gt; 0 &amp;&amp; array[j - 1] &gt; current ; j--){
+            //向前扫描，只要发现待排元素比较小，就插入
+
+            array[j] = array[j - 1];    //移出空位
+
+        }
+
+        array[j] = current;    //元素插入
+    }
+}
+</code></pre><h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><pre><code>/*
+ * 快速排序
+ * 两个方向，左边的i下标一直往右走，当a[i] &lt;= a[center_index]，
+ * 其中center_index是中枢元素的数组下标，一般取为数组第0个元素。而右边的j下标一直往左走，当a[j] &gt; a[center_index]
+ * 如果i和j都走不动了，i &lt;= j, 交换a[i]和a[j],重复上面的过程，直到i&gt;j
+ * 交换a[j]和a[center_index]，完成一趟快速排序
+ * 枢轴采用三数取中法可以优化
+ */
+//递归快速排序
+public static void quickSort(int a[]){
+    qSort(a, 0, a.length - 1);
+}
+//非递归快速排序，手动利用栈来存储每次分块快排的起始点，栈非空时循环获取中轴入栈  
+public static void quickSortNonRecursion(int array[]){
+     if (array == null || array.length == 1) return;
+     //存放开始与结束索引
+     Stack&lt;Integer&gt; s = new Stack&lt;Integer&gt;(); 
+     //压栈       
+     s.push(0); 
+     s.push(array.length - 1); 
+     //利用循环里实现
+     while (!s.empty()) { 
+         int right = s.pop(); 
+         int left = s.pop(); 
+         //如果最大索引小于等于左边索引，说明结束了
+         if (right &lt;= left) continue; 
+
+         int i = partition(array, left, right); 
+         if (left &lt; i - 1) {
+             s.push(left);
+             s.push(i - 1);
+         } 
+         if (i + 1 &lt; right) {
+             s.push(i+1);
+             s.push(right);
+         }
+     } 
+}
+//递归排序，利用两路划分
+public static void qSort(int a[],int low,int high){
+    int pivot = 0;
+    if(low &lt; high){
+        //将数组一分为二
+        pivot = partition(a,low,high);
+        //对第一部分进行递归排序
+        qSort(a,low,pivot);
+        //对第二部分进行递归排序
+        qSort(a,pivot + 1,high);
+    }
+}
+//partition函数
+public static int partition(int a[],int low,int high){
+
+    int pivotkey = a[low];   //选取第一个元素为枢轴记录
+    while(low &lt; high){
+        //将比枢轴记录小的交换到低端
+        while(low &lt; high &amp;&amp; a[high] &gt;= pivotkey){
+            high--;
+        }
+        //采用替换而不是交换的方式操作
+        a[low] = a[high];
+        //将比枢轴记录大的交换到高端
+        while(low &lt; high &amp;&amp; a[low] &lt;= pivotkey){
+            low++;
+        }
+        a[high] = a[low];
+    }
+    //枢纽所在位置赋值
+    a[low] = pivotkey;
+    //返回枢纽所在的位置
+    return low;
+}
+</code></pre><h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><pre><code>/*
+ * 归并排序
+ * 把序列递归地分成短序列
+ * 递归出口是短序列只有1个元素(认为直接有序)或者2个序列(1次比较和交换),
+ * 然后把各个有序的短序列合并成一个有序的长序列，不断合并直到原序列全部排好序
+ */
+//将有二个有序数列a[first...mid]和a[mid+1...last]合并。  
+public static void merge(int a[], int first, int mid, int last, int temp[]){
+
+    int i = first,j = mid+1;
+    int k = 0;
+
+    while(i &lt;= mid &amp;&amp; j&lt;= last){
+        if(a[i]&lt;a[j])
+            temp[k++] = a[i++];
+        else
+            temp[k++] = a[j++];
+    }
+
+    while(i &lt;= mid)
+        temp[k++] = a[i++];
+    while(j &lt;= last)
+        temp[k++] = a[j++];
+
+    for(i = 0 ; i &lt; k ; i++)
+        a[first+i] = temp[i];
+}
+
+//递归合并排序
+public static void mSort(int a[], int first,int last, int temp[]){
+    if(first &lt; last){
+        int mid = (first + last) / 2;
+        mSort(a, first, mid, temp);
+        mSort(a, mid+1, last, temp);
+        merge(a, first, mid, last, temp);
+
+    }
+}
+//提供通用归并排序接口
+public static void mergeSort(int a[]){
+    int[] temp = new int[a.length];
+    mSort(a, 0, a.length-1, temp);
+}
+</code></pre><h2 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h2><pre><code>/*
+ * 希尔排序
+ * 按照不同步长对元素进行插入排序
+ * 插入排序的一种
+ */
+public static void shellSort(int a[]){
+    //定义一个增长序列，即分割数组的增量
+    int inc = a.length,i,j,temp;
+    do{
+        inc = inc / 3 + 1;
+        for(i = inc ; i &lt; a.length ; i++){
+            if(a[i] &lt; a[i - inc]){
+                //将a[i]插入有有序表中
+                temp = a[i];
+                //记录后移
+                for(j = i - inc ; j &gt;= 0 &amp;&amp; temp &lt; a[j] ; j -= inc){
+                    a[j + inc] = a[j];
+                }
+                //把需要插入的值插入到那个位置，这里是j+inc
+                a[j + inc] = temp;
+            }
+        }
+    }while(inc &gt; 1);  //循环的终止条件是增量变为1的时候
+}
+</code></pre><h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><pre><code>/*
+ * 堆排序
+ * 调整最大堆，交换根元素和最后一个元素。
+ * 参数说明：
+ *     a -- 待排序的数组
+ */
+public static void heapSort(int[] a) {
+    int n = a.length;
+    int i,tmp;
+
+    // 从(n/2-1) --&gt; 0逐次遍历。遍历之后，得到的数组实际上是一个(最大)二叉堆。
+    for (i = n / 2 - 1; i &gt;= 0; i--)
+        maxHeapDown(a, i, n-1);
+
+    // 从最后一个元素开始对序列进行调整，不断的缩小调整的范围直到第一个元素
+    for (i = n - 1; i &gt; 0; i--) {
+        // 交换a[0]和a[i]。交换后，a[i]是a[0...i]中最大的。
+        tmp = a[0];
+        a[0] = a[i];
+        a[i] = tmp;
+        // 调整a[0...i-1]，使得a[0...i-1]仍然是一个最大堆。
+        // 即，保证a[i-1]是a[0...i-1]中的最大值。
+        maxHeapDown(a, 0, i-1);
+    }
+}
+/*
+ * 注：数组实现的堆中，第N个节点的左孩子的索引值是(2N+1)，右孩子的索引是(2N+2)。
+ *     其中，N为数组下标索引值，如数组中第1个数对应的N为0。
+ *
+ * 参数说明：
+ *     a -- 待排序的数组
+ *     start -- 被下调节点的起始位置(一般为0，表示从第1个开始)
+ *     end   -- 截至范围(一般为数组中最后一个元素的索引)
+ */
+public static void maxHeapDown(int[] a, int start, int end) {
+    int c = start;            // 当前(current)节点的位置
+    int l = 2*c + 1;        // 左(left)孩子的位置
+    int tmp = a[c];            // 当前(current)节点的大小
+
+    for (; l &lt;= end; c=l,l=2*l+1) {
+        // &quot;l&quot;是左孩子，&quot;l+1&quot;是右孩子
+        if ( l &lt; end &amp;&amp; a[l] &lt; a[l+1])
+            l++;        // 左右两孩子中选择较大者，即m_heap[l+1]
+        if (tmp &gt;= a[l])
+            break;        // 调整结束
+        else {            // 交换值
+            a[c] = a[l];
+            a[l]= tmp;
+        }
+    }
+}
+</code></pre><h2 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h2><pre><code>/*
+ * 基数排序
+ * 按照低位先排序，然后收集；再按照高位排序，然后再收集；依次类推，直到最高位
+ */
+public  static void radixSort(int[] array,int d)
+{
+    int n=1;   //代表位数对应的数：1,10,100...
+    int k=0;   //保存每一位排序后的结果用于下一位的排序输入
+    int length=array.length;
+    int[][] bucket=new int[10][length];      //排序桶用于保存每次排序后的结果，这一位上排序结果相同的数字放在同一个桶里
+    int[] order=new int[length];    //用于保存每个桶里有多少个数字
+    while(n&lt;d)
+    {
+        for(int num:array)    //将数组array里的每个数字放在相应的桶里
+        {
+            int digit=(num/n)%10;
+            bucket[digit][order[digit]]=num;
+            order[digit]++;
+        }
+        for(int i=0;i&lt;length;i++)      //将前一个循环生成的桶里的数据覆盖到原数组中用于保存这一位的排序结果
+        {
+            if(order[i]!=0)        //这个桶里有数据，从上到下遍历这个桶并将数据保存到原数组中
+            {
+                for(int j=0;j&lt;order[i];j++)
+                {
+                    array[k]=bucket[i][j];
+                    k++;
+                }
+            }
+            order[i]=0;      //将桶里计数器置0，用于下一次位排序
+        }
+        n*=10;
+        k=0;               //将k置0，用于下一轮保存位排序结果
+    }
+
+}
+</code></pre><h2 id="通用的swap函数"><a href="#通用的swap函数" class="headerlink" title="通用的swap函数"></a>通用的swap函数</h2><pre><code>public static void swap(int array[],int i,int j){
+    int temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+}
+</code></pre><h2 id="性能比较"><a href="#性能比较" class="headerlink" title="性能比较"></a>性能比较</h2><ul>
+<li>win7 64位 4G内存 jdk1.7.0_80下测试<ul>
+<li>10万个随机数，各方法所用毫秒数<br><img src="http://i.imgur.com/yL8k9QH.png" alt="10万个随机数"></li>
+<li>100万个随机数，各方法所用毫秒数<br><img src="http://i.imgur.com/GMyVkK6.png" alt="100万个随机数"></li>
+</ul>
+</li>
+<li>可见快速排序在大规模随机数据下是最为优秀的</li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/算法/">算法</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Java/">Java</a><a href="/tags/排序/">排序</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2016/03/25/八大排序算法Java实现/" data-title="八大排序算法Java实现 | Hexo" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/03/25/格雷码/" title="格雷码实现">
+  <strong>上一篇：</strong><br/>
+  <span>
+  格雷码实现</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/03/20/Java安全之对称加密、非对称加密、数字签名/"  title="Java安全之对称加密、非对称加密、数字签名">
+ <strong>下一篇：</strong><br/> 
+ <span>Java安全之对称加密、非对称加密、数字签名
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#冒泡排序"><span class="toc-number">1.</span> <span class="toc-text">冒泡排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选择排序"><span class="toc-number">2.</span> <span class="toc-text">选择排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入排序"><span class="toc-number">3.</span> <span class="toc-text">插入排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#快速排序"><span class="toc-number">4.</span> <span class="toc-text">快速排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#归并排序"><span class="toc-number">5.</span> <span class="toc-text">归并排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#希尔排序"><span class="toc-number">6.</span> <span class="toc-text">希尔排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#堆排序"><span class="toc-number">7.</span> <span class="toc-text">堆排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基数排序"><span class="toc-number">8.</span> <span class="toc-text">基数排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通用的swap函数"><span class="toc-number">9.</span> <span class="toc-text">通用的swap函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#性能比较"><span class="toc-number">10.</span> <span class="toc-text">性能比较</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Java/" title="Java">Java<sup>9</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据库/" title="数据库">数据库<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/算法/" title="算法">算法<sup>12</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/网络/" title="网络">网络<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>20</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/排序/" title="排序">排序<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JVM/" title="JVM">JVM<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/链表/" title="链表">链表<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MySQL/" title="MySQL">MySQL<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/树/" title="树">树<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/二叉树/" title="二叉树">二叉树<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/查找/" title="查找">查找<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/数据库/" title="数据库">数据库<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/递归/" title="递归">递归<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/存储引擎/" title="存储引擎">存储引擎<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/网络/" title="网络">网络<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/TCP/" title="TCP">TCP<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Hashtable/" title="Hashtable">Hashtable<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ConcurrentHashMap/" title="ConcurrentHashMap">ConcurrentHashMap<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/线程/" title="线程">线程<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/线程池/" title="线程池">线程池<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/并发/" title="并发">并发<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/HashMap/" title="HashMap">HashMap<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/内存区域/" title="内存区域">内存区域<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="John Doe">John Doe</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
