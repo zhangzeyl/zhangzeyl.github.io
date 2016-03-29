@@ -29,7 +29,7 @@
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
     
     
-    <link rel="icon" href="/img/zz.png">
+    <link rel="icon" href="/favicon.ico">
     
     
     <link rel="apple-touch-icon" href="/img/jacman.jpg">
@@ -44,14 +44,14 @@
 <div>
 		
 			<div id="imglogo">
-				<a href="/"><img src="/img/logo.png" alt="Hexo" title="Hexo"/></a>
+				<a href="/"><img src="/img/logo.gif" alt="Hexo" title="Hexo"/></a>
 			</div>
 			
 			<div id="textlogo">
 				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -67,7 +67,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
 						<input type="hidden" name="q" value="site:yoursite.com">
 					</form>
 					
@@ -90,14 +90,14 @@
 		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-29T04:01:33.000Z" itemprop="datePublished"> Published 2016-03-29</time>
+    <time datetime="2016-03-29T04:01:33.000Z" itemprop="datePublished"> 发表于 2016-03-29</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目录</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#在JDK-1-2以前的版本中，若一个对象不被任何变量引用，那么程序就无法再使用这个对象。也就是说，只有对象处于可触及（reachable）状态，程序才能使用它。从JDK-1-2版本开始，把对象的引用分为4种级别，从而使程序能更加灵活地控制对象的生命周期。这4种级别由高到低依次为：强引用、软引用、弱引用和虚引用。"><span class="toc-number">1.</span> <span class="toc-text">在JDK 1.2以前的版本中，若一个对象不被任何变量引用，那么程序就无法再使用这个对象。也就是说，只有对象处于可触及（reachable）状态，程序才能使用它。从JDK 1.2版本开始，把对象的引用分为4种级别，从而使程序能更加灵活地控制对象的生命周期。这4种级别由高到低依次为：强引用、软引用、弱引用和虚引用。</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#强引用（StrongReference）"><span class="toc-number"></span> <span class="toc-text">强引用（StrongReference）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#软引用（SoftReference）"><span class="toc-number"></span> <span class="toc-text">软引用（SoftReference）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#弱引用（WeakReference）"><span class="toc-number"></span> <span class="toc-text">弱引用（WeakReference）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#虚引用（PhantomReference）"><span class="toc-number"></span> <span class="toc-text">虚引用（PhantomReference）</span></a>
 		
@@ -163,17 +163,17 @@ PhantomReference pr = new PhantomReference (object, queue);
 	
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目录</strong>
  
  <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#在JDK-1-2以前的版本中，若一个对象不被任何变量引用，那么程序就无法再使用这个对象。也就是说，只有对象处于可触及（reachable）状态，程序才能使用它。从JDK-1-2版本开始，把对象的引用分为4种级别，从而使程序能更加灵活地控制对象的生命周期。这4种级别由高到低依次为：强引用、软引用、弱引用和虚引用。"><span class="toc-number">1.</span> <span class="toc-text">在JDK 1.2以前的版本中，若一个对象不被任何变量引用，那么程序就无法再使用这个对象。也就是说，只有对象处于可触及（reachable）状态，程序才能使用它。从JDK 1.2版本开始，把对象的引用分为4种级别，从而使程序能更加灵活地控制对象的生命周期。这4种级别由高到低依次为：强引用、软引用、弱引用和虚引用。</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#强引用（StrongReference）"><span class="toc-number"></span> <span class="toc-text">强引用（StrongReference）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#软引用（SoftReference）"><span class="toc-number"></span> <span class="toc-text">软引用（SoftReference）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#弱引用（WeakReference）"><span class="toc-number"></span> <span class="toc-text">弱引用（WeakReference）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#虚引用（PhantomReference）"><span class="toc-number"></span> <span class="toc-text">虚引用（PhantomReference）</span></a>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
 <aside class="clearfix">
 
   
@@ -181,7 +181,7 @@ PhantomReference pr = new PhantomReference (object, queue);
 
   
 <div class="categorieslist">
-	<p class="asidetitle">Categories</p>
+	<p class="asidetitle">分类</p>
 		<ul>
 		
 		  
@@ -210,7 +210,7 @@ PhantomReference pr = new PhantomReference (object, queue);
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
 		
 			
@@ -246,6 +246,10 @@ PhantomReference pr = new PhantomReference (object, queue);
 			
 		
 			
+				<li><a href="/tags/安全/" title="安全">安全<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/对称加密/" title="对称加密">对称加密<sup>1</sup></a></li>
 			
 		
@@ -278,19 +282,15 @@ PhantomReference pr = new PhantomReference (object, queue);
 			
 		
 			
-				<li><a href="/tags/数据库/" title="数据库">数据库<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/ConcurrentHashMap/" title="ConcurrentHashMap">ConcurrentHashMap<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/存储引擎/" title="存储引擎">存储引擎<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/HashMap/" title="HashMap">HashMap<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/wait/" title="wait">wait<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/notify/" title="notify">notify<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -298,7 +298,7 @@ PhantomReference pr = new PhantomReference (object, queue);
 
 
   <div class="linkslist">
-  <p class="asidetitle">Links</p>
+  <p class="asidetitle">友情链接</p>
     <ul>
         
           <li>
@@ -320,11 +320,11 @@ PhantomReference pr = new PhantomReference (object, queue);
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">Weibo</p>
+  <p class="asidetitle">新浪微博</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -341,8 +341,8 @@ PhantomReference pr = new PhantomReference (object, queue);
 	
 	
 	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
-			This is my blog,believe it or not.</p>
+		<p> Hello ,I&#39;m zhangze. <br/>
+			This is my blog,shall you travel with me?</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">
@@ -551,7 +551,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

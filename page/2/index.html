@@ -25,7 +25,7 @@
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
     
     
-    <link rel="icon" href="/img/zz.png">
+    <link rel="icon" href="/favicon.ico">
     
     
     <link rel="apple-touch-icon" href="/img/jacman.jpg">
@@ -40,14 +40,14 @@
 <div>
 		
 			<div id="imglogo">
-				<a href="/"><img src="/img/logo.png" alt="Hexo" title="Hexo"/></a>
+				<a href="/"><img src="/img/logo.gif" alt="Hexo" title="Hexo"/></a>
 			</div>
 			
 			<div id="textlogo">
 				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -63,7 +63,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
 						<input type="hidden" name="q" value="site:yoursite.com">
 					</form>
 					
@@ -88,7 +88,7 @@
 		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-25T13:43:46.000Z" itemprop="datePublished"> Published 2016-03-25</time>
+    <time datetime="2016-03-25T13:43:46.000Z" itemprop="datePublished"> 发表于 2016-03-25</time>
     
   </p>
 </header>
@@ -176,7 +176,7 @@
 		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-25T12:43:46.000Z" itemprop="datePublished"> Published 2016-03-25</time>
+    <time datetime="2016-03-25T12:43:46.000Z" itemprop="datePublished"> 发表于 2016-03-25</time>
     
   </p>
 </header>
@@ -269,7 +269,7 @@
 		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-25T08:18:30.000Z" itemprop="datePublished"> Published 2016-03-25</time>
+    <time datetime="2016-03-25T08:18:30.000Z" itemprop="datePublished"> 发表于 2016-03-25</time>
     
   </p>
 </header>
@@ -637,7 +637,7 @@ public  static void radixSort(int[] array,int d)
 		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-20T13:20:01.000Z" itemprop="datePublished"> Published 2016-03-20</time>
+    <time datetime="2016-03-20T13:20:01.000Z" itemprop="datePublished"> 发表于 2016-03-20</time>
     
   </p>
 </header>
@@ -957,7 +957,7 @@ private static void verify() throws Exception {
 		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-18T12:43:46.000Z" itemprop="datePublished"> Published 2016-03-18</time>
+    <time datetime="2016-03-18T12:43:46.000Z" itemprop="datePublished"> 发表于 2016-03-18</time>
     
   </p>
 </header>
@@ -1087,38 +1087,75 @@ private static void verify() throws Exception {
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/03/18/Hashtable与ConcurrentHashMap区别/" title="Hashtable与ConcurrentHashMap区别" itemprop="url">Hashtable与ConcurrentHashMap区别</a>
+      <a href="/2016/03/18/JVM类加载过程/" title="JVM类加载过程" itemprop="url">JVM类加载过程</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-18T12:43:46.000Z" itemprop="datePublished"> Published 2016-03-18</time>
+    <time datetime="2016-03-18T12:43:46.000Z" itemprop="datePublished"> 发表于 2016-03-18</time>
     
   </p>
 </header>
     <div class="article-content">
         
-        <h2 id="ConcurrentHashMap的特点"><a href="#ConcurrentHashMap的特点" class="headerlink" title="ConcurrentHashMap的特点"></a>ConcurrentHashMap的特点</h2><ul>
-<li><p>融合了Hashtable和HashMap二者的优势。</p>
-<ul>
-<li>Hashtable是做了同步的</li>
-<li>HashMap未考虑同步。</li>
-<li>HashMap在单线程情况下效率较高</li>
-<li>Hashtable在的多线程情况下，同步操作能保证程序执行的正确性</li>
+        <h2 id="类从加载到虚拟机到卸载"><a href="#类从加载到虚拟机到卸载" class="headerlink" title="类从加载到虚拟机到卸载"></a>类从加载到虚拟机到卸载</h2><ul>
+<li>整个生命周期包括：<ul>
+<li>加载（Loading）</li>
+<li>连接（Linking）<ul>
+<li>验证（Validation）</li>
+<li>准备（Preparation）</li>
+<li>解析（Resolution）</li>
 </ul>
 </li>
-<li><p>Hashtable每次同步执行的时候都要锁住整个结构</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><center><img src="http://i.imgur.com/AAFLQpc.jpg" alt="Hashtable与ConcurrentHashMap的锁结构"></center></h2></li>
-<li>ConcurrentHashMap正是为了解决这个问题而诞生的</li>
-<li>ConcurrentHashMap锁的方式是稍微细粒度的。 ConcurrentHashMap将hash表分为16个桶（默认值），诸如get,put,remove等常用操作只锁当前需要用到的桶。</li>
-<li>试想，原来只能一个线程进入，现在却能同时16个写线程进入（写线程才需要锁定，而读线程几乎不受限制，之后会提到），并发性的提升是显而易见的。</li>
+<li>初始化（Initialization）</li>
+<li>使用（Using）</li>
+<li>卸载（Unloading）</li>
 </ul>
-<h2 id="ConcurrentHashMap的迭代方式"><a href="#ConcurrentHashMap的迭代方式" class="headerlink" title="ConcurrentHashMap的迭代方式"></a>ConcurrentHashMap的迭代方式</h2><ul>
-<li>使用了不同于传统集合的快速失败迭代器的另一种迭代方式，我们称为弱一致迭代器。</li>
-<li>在这种迭代方式中，当iterator被创建后集合再发生改变就不再是抛出 ConcurrentModificationException，取而代之的是在改变时new新的数据从而不影响原有的数据，iterator完成后再将头指针替换为新的数据</li>
-<li>这样iterator线程可以使用原来老的数据，而写线程也可以并发的完成改变，更重要的，这保证了多个线程并发执行的连续性和扩展性，是性能提升的关键。</li>
+</li>
+</ul>
+<h3 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h3><ul>
+<li>虚拟机主要完成三件事<ol>
+<li>通过一个类的全限定名来获取定义此类的二进制字节流</li>
+<li>将这个字节流所代表的静态存储结构转化为方法区域的运行时数据结构</li>
+<li>在Java堆中生成一个代表这个类的java.lang.Class对象，作为方法区域数据的访问入口</li>
+</ol>
+</li>
+</ul>
+<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><ul>
+<li>作用<ul>
+<li>保证Class文件的字节流包含的信息符合JVM规范，不会给JVM造成危害</li>
+<li>如果验证失败，就会抛出一个java.lang.VerifyError异常或其子类异常</li>
+</ul>
+</li>
+<li>四个阶段<ol>
+<li>文件格式验证：验证字节流文件是否符合Class文件格式的规范，并且能被当前虚拟机正确的处理</li>
+<li>元数据验证：是对字节码描述的信息进行语义分析，以保证其描述的信息符合Java语言的规范</li>
+<li>字节码验证：主要是进行数据流和控制流的分析，保证被校验类的方法在运行时不会危害虚拟机。</li>
+<li>符号引用验证：符号引用验证发生在虚拟机将符号引用转化为直接引用的时候，这个转化动作将在解析阶段中发生</li>
+</ol>
+</li>
+</ul>
+<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><ul>
+<li>为变量分配内存并设置类变量的初始化</li>
+<li>在这个阶段分配的仅为类的变量（static修饰的变量），而不包括类的实例变量。对已非final的变量，JVM会将其设置成“零值”，而不是其赋值语句的值：<pre><code>pirvate static int size = 10;
+</code></pre>那么在这个阶段，size的值为0，而不是10。final修饰的类变量将会赋值成真实的值。</li>
+</ul>
+<h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><ul>
+<li>将常量池内的符号引用替换成直接引用</li>
+<li>主要包括四种类型引用的解析：<ul>
+<li>类或接口的解析</li>
+<li>字段解析</li>
+<li>方法解析</li>
+<li>接口方法解析。</li>
+</ul>
+</li>
+</ul>
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><ul>
+<li>在准备阶段，类变量已经经过一次初始化了</li>
+<li>在这个阶段，则是根据程序员通过程序制定的计划去初始化类的变量和其他资源。这些资源有static{}块，构造函数，父类的初始化等</li>
+<li>直到初始化阶段，才真正开始执行类中定义的Java程序代码</li>
 </ul>
 
         
@@ -1138,7 +1175,7 @@ private static void verify() throws Exception {
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/Java/">Java</a><a href="/tags/Hashtable/">Hashtable</a><a href="/tags/ConcurrentHashMap/">ConcurrentHashMap</a>
+  <span></span> <a href="/tags/Java/">Java</a><a href="/tags/JVM/">JVM</a>
   </div>
 
 </div>
@@ -1173,7 +1210,7 @@ private static void verify() throws Exception {
 		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-18T12:43:46.000Z" itemprop="datePublished"> Published 2016-03-18</time>
+    <time datetime="2016-03-18T12:43:46.000Z" itemprop="datePublished"> 发表于 2016-03-18</time>
     
   </p>
 </header>
@@ -1279,150 +1316,6 @@ private static void verify() throws Exception {
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/03/18/MySQL数据库三种常用存储引擎特性对比/" title="MySQL数据库三种常用存储引擎特性对比" itemprop="url">MySQL数据库三种常用存储引擎特性对比</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
-		
-  <p class="article-time">
-    <time datetime="2016-03-18T12:43:46.000Z" itemprop="datePublished"> Published 2016-03-18</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="什么叫存储引擎？"><a href="#什么叫存储引擎？" class="headerlink" title="什么叫存储引擎？"></a>什么叫存储引擎？</h2><ul>
-<li>MySQL中的数据用各种不同的技术存储在文件（或内存）中，这些技术中的每一种技术都使用不同的存储机制，索引技巧，锁定水平并且最终提供广泛的不同功能和能力。</li>
-<li>在MySQL中将这些不同的技术及配套的相关功能称为存储引擎。</li>
-</ul>
-<h2 id="MySQL存储引擎特点"><a href="#MySQL存储引擎特点" class="headerlink" title="MySQL存储引擎特点"></a>MySQL存储引擎特点</h2><ul>
-<li>不仅可以同时使用多种存储引擎，</li>
-<li>而且每种存储引擎和MySQL之间使用插件方式这种非常松的耦合关系。</li>
-</ul>
-<h2 id="MyISAM"><a href="#MyISAM" class="headerlink" title="MyISAM"></a>MyISAM</h2><ul>
-<li>特性：<ul>
-<li>不支持事务：MyISAM存储引擎不支持事务，所以对事务有要求的业务场景不能使用</li>
-<li>表级锁定：其锁定机制是表级索引，这虽然可以让锁定的实现成本很小但是也同时大大降低了其并发性能</li>
-<li>读写互相阻塞：不仅会在写入的时候阻塞读取，MyISAM还会在读取的时候阻塞写入，但读本身并不会阻塞另外的读</li>
-<li>只会缓存索引：MyISAM可以通过key_buffer缓存以大大提高访问性能减少磁盘IO，但是这个缓存区只会缓存索引，而不会缓存数据</li>
-</ul>
-</li>
-<li>适用场景<ul>
-<li>不需要事务支持（不支持）</li>
-<li>并发相对较低（锁定机制问题）</li>
-<li>数据修改相对较少（阻塞问题）</li>
-<li>以读为主</li>
-<li>数据一致性要求不是非常高</li>
-</ul>
-</li>
-<li>最佳实践<ul>
-<li>尽量索引（缓存机制）</li>
-<li>调整读写优先级，根据实际需求确保重要操作更优先</li>
-<li>启用延迟插入改善大批量写入性能</li>
-<li>尽量顺序操作让insert数据都写入到尾部，减少阻塞</li>
-<li>分解大的操作，降低单个操作的阻塞时间</li>
-<li>降低并发数，某些高并发场景通过应用来进行排队机制</li>
-<li>对于相对静态的数据，充分利用Query Cache可以极大的提高访问效率</li>
-<li>MyISAM的Count只有在全表扫描的时候特别高效，带有其他条件的count都需要进行实际的数据访问</li>
-</ul>
-</li>
-</ul>
-<h2 id="InnoDB"><a href="#InnoDB" class="headerlink" title="InnoDB"></a>InnoDB</h2><ul>
-<li>特性<ul>
-<li>具有较好的事务支持：支持4个事务隔离级别，支持多版本读</li>
-<li>行级锁定：通过索引实现，全表扫描仍然会是表锁，注意间隙锁的影响</li>
-<li>读写阻塞与事务隔离级别相关</li>
-<li>具有非常高效的缓存特性：能缓存索引，也能缓存数据</li>
-<li>整个表和主键以Cluster方式存储，组成一颗平衡树</li>
-<li>所有Secondary Index都会保存主键信息</li>
-</ul>
-</li>
-<li>适用场景<ul>
-<li>需要事务支持（具有较好的事务特性）</li>
-<li>行级锁定对高并发有很好的适应能力，但需要确保查询是通过索引完成</li>
-<li>数据更新较为频繁的场景</li>
-<li>数据一致性要求较高</li>
-<li>硬件设备内存较大，可以利用InnoDB较好的缓存能力来提高内存利用率，尽可能减少磁盘 IO</li>
-</ul>
-</li>
-<li>最佳实践<ul>
-<li>主键尽可能小，避免给Secondary index带来过大的空间负担</li>
-<li>避免全表扫描，因为会使用表锁</li>
-<li>尽可能缓存所有的索引和数据，提高响应速度</li>
-<li>在大批量小插入的时候，尽量自己控制事务而不要使用autocommit自动提交</li>
-<li>合理设置innodb_flush_log_at_trx_commit参数值，不要过度追求安全性</li>
-<li>避免主键更新，因为这会带来大量的数据移动</li>
-</ul>
-</li>
-</ul>
-<h2 id="NDBCluster"><a href="#NDBCluster" class="headerlink" title="NDBCluster"></a>NDBCluster</h2><ul>
-<li>特性<ul>
-<li>分布式：分布式存储引擎，可以由多个NDBCluster存储引擎组成集群分别存放整体数据的一部分</li>
-<li>支持事务：和Innodb一样，支持事务</li>
-<li>可与mysqld不在一台主机：可以和mysqld分开存在于独立的主机上，然后通过网络和mysqld通信交互</li>
-<li>内存需求量巨大：新版本索引以及被索引的数据必须存放在内存中，老版本所有数据和索引必须存在与内存中</li>
-</ul>
-</li>
-<li>适用场景<ul>
-<li>具有非常高的并发需求</li>
-<li>对单个请求的响应并不是非常的critical</li>
-<li>查询简单，过滤条件较为固定，每次请求数据量较少，又不希望自己进行水平Sharding</li>
-</ul>
-</li>
-<li>最佳实践<ul>
-<li>尽可能让查询简单，避免数据的跨节点传输</li>
-<li>尽可能满足SQL节点的计算性能，大一点的集群SQL节点会明显多余Data节点</li>
-<li>在各节点之间尽可能使用万兆网络环境互联，以减少数据在网络层传输过程中的延时<br>注：以上三个存储引擎是目前相对主流的存储引擎，还有其他类似如：Memory，Merge，CSV，Archive等存储引擎的使用场景都相对较少。</li>
-</ul>
-</li>
-</ul>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/数据库/">数据库</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/数据库/">数据库</a><a href="/tags/MySQL/">MySQL</a><a href="/tags/存储引擎/">存储引擎</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
       <a href="/2016/03/18/hashmap的实现/" title="HashMap实现原理" itemprop="url">HashMap实现原理</a>
   </h1>
   <p class="article-author">By
@@ -1430,7 +1323,7 @@ private static void verify() throws Exception {
 		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-18T12:43:46.000Z" itemprop="datePublished"> Published 2016-03-18</time>
+    <time datetime="2016-03-18T12:43:46.000Z" itemprop="datePublished"> 发表于 2016-03-18</time>
     
   </p>
 </header>
@@ -1525,41 +1418,53 @@ return Entry[index];
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/03/18/linux系统进程间通信的方式/" title="linux系统进程间通信的方式" itemprop="url">linux系统进程间通信的方式</a>
+      <a href="/2016/03/18/wait_notify/" title="Java的wait(), notify()和notifyAll()" itemprop="url">Java的wait(), notify()和notifyAll()</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-18T12:43:46.000Z" itemprop="datePublished"> Published 2016-03-18</time>
+    <time datetime="2016-03-18T12:43:46.000Z" itemprop="datePublished"> 发表于 2016-03-18</time>
     
   </p>
 </header>
     <div class="article-content">
         
-        <h2 id="管道-pipe-："><a href="#管道-pipe-：" class="headerlink" title="管道( pipe )："></a>管道( pipe )：</h2><ul>
-<li>一种半双工的通信方式，数据只能单向流动，而且只能在具有亲缘关系的进程间使用。进程的亲缘关系通常是指父子进程关系。</li>
+        <h2 id="官方解释"><a href="#官方解释" class="headerlink" title="官方解释"></a>官方解释</h2><ul>
+<li>wait(),notify()和notifyAll()都是java.lang.Object的方法：</li>
+<li>wait(): Causes the current thread to wait until another thread invokes the notify() method or the notifyAll() method for this object.</li>
+<li>notify(): Wakes up a single thread that is waiting on this object’s monitor.</li>
+<li>notifyAll(): Wakes up all threads that are waiting on this object’s monitor.<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2></li>
+<li>实现线程间阻塞(Blocking)</li>
+<li>控制进程内调度(inter-process communication)</li>
 </ul>
-<h2 id="命名管道-named-pipe-："><a href="#命名管道-named-pipe-：" class="headerlink" title="命名管道 (named pipe) ："></a>命名管道 (named pipe) ：</h2><ul>
-<li>半双工的通信方式，但是它允许无亲缘关系进程间的通信。</li>
+<h2 id="调用前提"><a href="#调用前提" class="headerlink" title="调用前提"></a>调用前提</h2><ul>
+<li>必须先获得锁</li>
+<li>必须锁定该对象</li>
 </ul>
-<h2 id="信号量-semophore-："><a href="#信号量-semophore-：" class="headerlink" title="信号量( semophore ) ："></a>信号量( semophore ) ：</h2><ul>
-<li>信号量是一个计数器，可以用来控制多个进程对共享资源的访问。它常作为一种锁机制，防止某进程正在访问共享资源时，其他进程也访问该资源</li>
-<li>因此，主要作为进程间以及同一进程内不同线程之间的同步手段</li>
+<h2 id="不获得锁会怎样"><a href="#不获得锁会怎样" class="headerlink" title="不获得锁会怎样"></a>不获得锁会怎样</h2><pre><code>public static void main(String[] args) throws InterruptedException {
+    Object obj = new Object();
+    obj.wait();
+    obj.notifyAll();
+}
+</code></pre><ul>
+<li>抛出java.lang.IllegalMonitorStateException的异常</li>
 </ul>
-<h2 id="消息队列-message-queue-："><a href="#消息队列-message-queue-：" class="headerlink" title="消息队列( message queue ) ："></a>消息队列( message queue ) ：</h2><ul>
-<li>消息队列是由消息的链表，存放在内核中并由消息队列标识符标识。</li>
-<li>消息队列克服了信号传递信息少、管道只能承载无格式字节流以及缓冲区大小受限等缺点。</li>
+<h2 id="不获得该对象的锁会怎样"><a href="#不获得该对象的锁会怎样" class="headerlink" title="不获得该对象的锁会怎样"></a>不获得该对象的锁会怎样</h2><pre><code>    public static void main(String[] args) throws InterruptedException {
+        Object obj = new Object();
+        Object lock = new Object();
+        synchronized (lock) {
+            obj.wait();
+            obj.notifyAll();
+    }
+}
+</code></pre><ul>
+<li>抛出java.lang.IllegalMonitorStateException的异常</li>
 </ul>
-<h2 id="信号-sinal-："><a href="#信号-sinal-：" class="headerlink" title="信号 ( sinal ) ："></a>信号 ( sinal ) ：</h2><ul>
-<li>信号是一种比较复杂的通信方式，用于通知接收进程某个事件已经发生。</li>
-</ul>
-<h2 id="共享内存-shared-memory-："><a href="#共享内存-shared-memory-：" class="headerlink" title="共享内存( shared memory ) ："></a>共享内存( shared memory ) ：</h2><ul>
-<li>共享内存就是映射一段能被其他进程所访问的内存，这段共享内存由一个进程创建，但多个进程都可以访问。共享内存是最快的 IPC 方式，它是针对其他进程间通信方式运行效率低而专门设计的。它往往与其他通信机制，如信号量，配合使用，来实现进程间的同步和通信。</li>
-</ul>
-<h2 id="套接字-socket-："><a href="#套接字-socket-：" class="headerlink" title="套接字( socket ) ："></a>套接字( socket ) ：</h2><ul>
-<li>套接口也是一种进程间通信机制，与其他通信机制不同的是，它可用于不同主机间的进程通信。</li>
+<h2 id="为什么必须获得该对象的锁"><a href="#为什么必须获得该对象的锁" class="headerlink" title="为什么必须获得该对象的锁"></a>为什么必须获得该对象的锁</h2><ul>
+<li>没有锁，wait和notify有可能会产生竞态条件(Race Condition)</li>
+<li>所以，JVM通过在执行的时候抛出IllegalMonitorStateException的异常，来确保wait, notify时，获得了对象的锁，从而消除隐藏的Race Condition。</li>
 </ul>
 
         
@@ -1573,13 +1478,92 @@ return Entry[index];
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  <a class="article-category-link" href="/categories/Java/">Java</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/Linux/">Linux</a><a href="/tags/进程通信/">进程通信</a>
+  <span></span> <a href="/tags/Java/">Java</a><a href="/tags/wait/">wait</a><a href="/tags/notify/">notify</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/18/Hashtable与ConcurrentHashMap区别/" title="Hashtable与ConcurrentHashMap区别" itemprop="url">Hashtable与ConcurrentHashMap区别</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-18T12:43:46.000Z" itemprop="datePublished"> 发表于 2016-03-18</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="ConcurrentHashMap的特点"><a href="#ConcurrentHashMap的特点" class="headerlink" title="ConcurrentHashMap的特点"></a>ConcurrentHashMap的特点</h2><ul>
+<li><p>融合了Hashtable和HashMap二者的优势。</p>
+<ul>
+<li>Hashtable是做了同步的</li>
+<li>HashMap未考虑同步。</li>
+<li>HashMap在单线程情况下效率较高</li>
+<li>Hashtable在的多线程情况下，同步操作能保证程序执行的正确性</li>
+</ul>
+</li>
+<li><p>Hashtable每次同步执行的时候都要锁住整个结构</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><center><img src="http://i.imgur.com/AAFLQpc.jpg" alt="Hashtable与ConcurrentHashMap的锁结构"></center></h2></li>
+<li>ConcurrentHashMap正是为了解决这个问题而诞生的</li>
+<li>ConcurrentHashMap锁的方式是稍微细粒度的。 ConcurrentHashMap将hash表分为16个桶（默认值），诸如get,put,remove等常用操作只锁当前需要用到的桶。</li>
+<li>试想，原来只能一个线程进入，现在却能同时16个写线程进入（写线程才需要锁定，而读线程几乎不受限制，之后会提到），并发性的提升是显而易见的。</li>
+</ul>
+<h2 id="ConcurrentHashMap的迭代方式"><a href="#ConcurrentHashMap的迭代方式" class="headerlink" title="ConcurrentHashMap的迭代方式"></a>ConcurrentHashMap的迭代方式</h2><ul>
+<li>使用了不同于传统集合的快速失败迭代器的另一种迭代方式，我们称为弱一致迭代器。</li>
+<li>在这种迭代方式中，当iterator被创建后集合再发生改变就不再是抛出 ConcurrentModificationException，取而代之的是在改变时new新的数据从而不影响原有的数据，iterator完成后再将头指针替换为新的数据</li>
+<li>这样iterator线程可以使用原来老的数据，而写线程也可以并发的完成改变，更重要的，这保证了多个线程并发执行的连续性和扩展性，是性能提升的关键。</li>
+</ul>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Java/">Java</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Java/">Java</a><a href="/tags/Hashtable/">Hashtable</a><a href="/tags/ConcurrentHashMap/">ConcurrentHashMap</a>
   </div>
 
 </div>
@@ -1607,10 +1591,10 @@ return Entry[index];
   </nav>
 
 </div>
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
 <aside class="clearfix">
 
   
@@ -1618,7 +1602,7 @@ return Entry[index];
 
   
 <div class="categorieslist">
-	<p class="asidetitle">Categories</p>
+	<p class="asidetitle">分类</p>
 		<ul>
 		
 		  
@@ -1647,7 +1631,7 @@ return Entry[index];
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
 		
 			
@@ -1683,6 +1667,10 @@ return Entry[index];
 			
 		
 			
+				<li><a href="/tags/安全/" title="安全">安全<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/对称加密/" title="对称加密">对称加密<sup>1</sup></a></li>
 			
 		
@@ -1715,19 +1703,15 @@ return Entry[index];
 			
 		
 			
-				<li><a href="/tags/数据库/" title="数据库">数据库<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/ConcurrentHashMap/" title="ConcurrentHashMap">ConcurrentHashMap<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/存储引擎/" title="存储引擎">存储引擎<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/HashMap/" title="HashMap">HashMap<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/wait/" title="wait">wait<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/notify/" title="notify">notify<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -1735,7 +1719,7 @@ return Entry[index];
 
 
   <div class="linkslist">
-  <p class="asidetitle">Links</p>
+  <p class="asidetitle">友情链接</p>
     <ul>
         
           <li>
@@ -1757,11 +1741,11 @@ return Entry[index];
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">Weibo</p>
+  <p class="asidetitle">新浪微博</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -1778,8 +1762,8 @@ return Entry[index];
 	
 	
 	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
-			This is my blog,believe it or not.</p>
+		<p> Hello ,I&#39;m zhangze. <br/>
+			This is my blog,shall you travel with me?</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">
@@ -1911,7 +1895,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
