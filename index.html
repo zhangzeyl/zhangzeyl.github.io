@@ -25,7 +25,7 @@
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
     
     
-    <link rel="icon" href="/img/favicon.ico">
+    <link rel="icon" href="/img/zz.png">
     
     
     <link rel="apple-touch-icon" href="/img/jacman.jpg">
@@ -125,64 +125,6 @@ PhantomReference pr = new PhantomReference (object, queue);
   
   <span></span> <a href="/tags/Java/">Java</a><a href="/tags/引用/">引用</a>
   </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/03/29/a/" title="Hello World" itemprop="url">Hello World</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
-		
-  <p class="article-time">
-    <time datetime="2016-03-28T16:42:40.302Z" itemprop="datePublished"> Published 2016-03-29</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
 
 </div>
 
@@ -1342,6 +1284,126 @@ public  boolean nodesValEqual(TreeNode root1, TreeNode root2) {
 
 
 
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/26/剑指Offer之十五--链表中倒数第k个结点/" title="剑指Offer之十五--链表中倒数第k个结点" itemprop="url">剑指Offer之十五--链表中倒数第k个结点</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-26T08:18:30.000Z" itemprop="datePublished"> Published 2016-03-26</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="链表结点结构"><a href="#链表结点结构" class="headerlink" title="链表结点结构"></a>链表结点结构</h2><pre><code>class ListNode{
+    int value;
+    ListNode next = null;
+    public ListNode(int value){
+        this.value = value;
+    }
+}
+</code></pre><h2 id="基本解法"><a href="#基本解法" class="headerlink" title="基本解法"></a>基本解法</h2><ul>
+<li>遍历两次，第一次确定链表长度，第二次返回第n-k+1个结点，即为所求</li>
+<li>注意k不能超过链表长度，代码中要进行判断</li>
+</ul>
+<hr>
+<pre><code>public static ListNode findKthToTail(ListNode head,int k){
+    if(head == null || k &lt;= 0 ){
+        return null;
+    }
+
+    ListNode node = head;
+    int nodesNum = 1;
+    while(node.next != null){
+        nodesNum++;
+        node = node.next;
+    }
+
+    node = head;
+    int count = 1;
+    while(k &lt;= nodesNum &amp;&amp; count != nodesNum - k + 1){
+        count++;
+        node = node.next;
+    }
+    if(k &lt;= nodesNum){
+        return node;
+    }
+    return null;
+}
+</code></pre><h2 id="高效解法"><a href="#高效解法" class="headerlink" title="高效解法"></a>高效解法</h2><ul>
+<li>前后指针，前指针先走k-1个结点，从第k个结点开始，后指针也跟着走</li>
+<li>当前指针的next为null时，此时后指针所在的位置就为链表的第k个结点</li>
+<li>同样注意还没走到第k个结点链表就结束的情况</li>
+</ul>
+<hr>
+<pre><code>public static ListNode findKthToTail2(ListNode head,int k){
+    if(head == null || k &lt;= 0)
+        return null;
+    ListNode pre = head;
+    ListNode behind = null;
+    for(int i = 0; i &lt; k - 1; i++){
+        if(pre.next != null){
+            pre = pre.next;
+        }else{
+            return null;
+        }
+    }
+
+    behind = head;
+    while(pre.next != null){
+        pre = pre.next;
+        behind = behind.next;
+    }
+    return behind;
+}
+</code></pre>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/算法/">算法</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Java/">Java</a><a href="/tags/链表/">链表</a><a href="/tags/查找/">查找</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
 
   <nav id="page-nav" class="clearfix">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
@@ -1424,31 +1486,15 @@ public  boolean nodesValEqual(TreeNode root1, TreeNode root2) {
 			
 		
 			
-				<li><a href="/tags/数据库/" title="数据库">数据库<sup>1</sup></a></li>
+				<li><a href="/tags/对称加密/" title="对称加密">对称加密<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/递归/" title="递归">递归<sup>1</sup></a></li>
+				<li><a href="/tags/非对称加密/" title="非对称加密">非对称加密<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/存储引擎/" title="存储引擎">存储引擎<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/网络/" title="网络">网络<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/TCP/" title="TCP">TCP<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Hashtable/" title="Hashtable">Hashtable<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/ConcurrentHashMap/" title="ConcurrentHashMap">ConcurrentHashMap<sup>1</sup></a></li>
+				<li><a href="/tags/数字签名/" title="数字签名">数字签名<sup>1</sup></a></li>
 			
 		
 			
@@ -1464,11 +1510,27 @@ public  boolean nodesValEqual(TreeNode root1, TreeNode root2) {
 			
 		
 			
-				<li><a href="/tags/HashMap/" title="HashMap">HashMap<sup>1</sup></a></li>
+				<li><a href="/tags/网络/" title="网络">网络<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/内存区域/" title="内存区域">内存区域<sup>1</sup></a></li>
+				<li><a href="/tags/TCP/" title="TCP">TCP<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/数据库/" title="数据库">数据库<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ConcurrentHashMap/" title="ConcurrentHashMap">ConcurrentHashMap<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/存储引擎/" title="存储引擎">存储引擎<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/HashMap/" title="HashMap">HashMap<sup>1</sup></a></li>
 			
 		
 		</ul>
